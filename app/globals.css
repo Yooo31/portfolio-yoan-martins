@@ -11,10 +11,24 @@ main {
   display: block
 }
 
+h1 {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.nav li {
+  color: #9A9A9A;
+  font-size: 18px;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.nav .active {
+  color: #FFFFFF;
+  border-bottom: 1px solid blue;
+}
 
 body {
   color: #d1d1d1;
-  background: #1d1d20;
+  background: #1E1E1E;
   font-family: IBM Plex Mono, monospace !important;
   margin: 0;
 }
@@ -23,11 +37,11 @@ h1,h2 {
   font-weight: 100
 }
 
-h1#typing {
+h2#typing {
   animation: typing 12s infinite steps(15);
 }
 
-h1#typing::after {
+h2#typing::after {
   content: "";
   position: absolute;
   display: block;
