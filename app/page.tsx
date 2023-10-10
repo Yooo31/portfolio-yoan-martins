@@ -1,6 +1,4 @@
 import Info from '@/app/components/Info';
-import Footer from '@/app/components/Footer';
-import Header from '@/app/components/Header';
 import TopLeft from '@/app/components/TopLeft';
 import BottomRight from '@/app/components/BottomRight';
 
@@ -11,14 +9,11 @@ export default function Home() {
         <div className="w-screen max-w-[1280px] box-border mt-0 mb-0 p-7 flex relative md:max-h-[790px] md:h-full sm:p-[20px]">
           <TopLeft />
 
-          <div className="w-full h-full">
-            <Header />
+          <div className="w-9/12 m-auto h-full">
 
             <main className="projects-overview">
               <Info />
             </main>
-
-            <Footer />
 
           </div>
 
