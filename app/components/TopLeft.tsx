@@ -20,7 +20,8 @@ const TopLeft = () => {
 
       </div>
 
-      <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4'>Accueil</h1>
+      <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4 hidden lg:block md:block'>Accueil</h1>
+
     </>
   )
 }

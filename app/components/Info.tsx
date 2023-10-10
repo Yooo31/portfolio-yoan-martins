@@ -15,7 +15,7 @@ const Info = () => {
                 <h2 id="typing" className="text-5xl font-bold overflow-hidden whitespace-nowrap relative">Hello World !!!</h2>
               </div>
             </div>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p className="py-6 mr-20">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           </div>
         </div>
       </div>
