@@ -53,6 +53,10 @@ h2#typing::after {
   animation: cursor 1.5s infinite;
 }
 
+footer {
+  color: #FFF;
+}
+
 @keyframes typing {
   0% {
     width: 0;
