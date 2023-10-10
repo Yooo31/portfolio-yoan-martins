@@ -13,8 +13,6 @@ export default function Home() {
               <Info />
             </main>
 
-          <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 text-[125px]'>Accueil</h1>
-
           <BottomRight />
         </div>
       </div>
