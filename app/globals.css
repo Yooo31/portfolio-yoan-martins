@@ -15,10 +15,60 @@ main {
 body {
   color: #d1d1d1;
   background: #1d1d20;
-  font-family: Montserrat-Regular;
+  font-family: IBM Plex Mono, monospace !important;
   margin: 0;
 }
 
 h1,h2 {
   font-weight: 100
+}
+
+h1#typing {
+  animation: typing 12s infinite steps(15);
+}
+
+h1#typing::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 1px;
+  background: #dadada;
+  right: 0;
+  top: 0;
+  animation: cursor 1.5s infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  60% {
+    width: 100%;
+  }
+  90% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+    animation-timing-function: steps(1);
+    animation-iteration-count: 1;
+  }
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
