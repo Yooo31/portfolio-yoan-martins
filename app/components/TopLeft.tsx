@@ -5,7 +5,7 @@ const TopLeft = () => {
   return (
     <>
       <div className='absolute top-0 left-0 flex items-col items-start'>
-        <svg width="300" height="300" data-name="corner-top-left" xmlns="http://www.w3.org/2000/svg" data-inlinesvg=".inlineSvgFile-7">
+        <svg className="hidden lg:block md:block" width="300" height="300" data-name="corner-top-left" xmlns="http://www.w3.org/2000/svg" data-inlinesvg=".inlineSvgFile-7">
           <defs>
             <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0" stopColor="yellow"></stop>

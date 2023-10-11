@@ -12,10 +12,10 @@ const Info = () => {
           <div className='flex flex-col'>
             <div className='flex justify-start'>
               <div>
-                <h2 id="typing" className="text-5xl font-bold overflow-hidden whitespace-nowrap relative">Hello World !!!</h2>
+                <h2 id="typing" className="text-2xl md:text-5xl font-bold overflow-hidden whitespace-nowrap relative">Hello World !!!</h2>
               </div>
             </div>
-            <p className="py-6 mr-20">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p className="py-6 text-sm md:text-base mr-0 md:mr-20">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           </div>
         </div>
       </div>
