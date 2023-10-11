@@ -1,7 +1,11 @@
 import Header from '@/app/components/Header'
 import React from 'react'
 
-const TopLeft = () => {
+interface TopLeftProps {
+  setSelectedComponent: (component: string) => void; // Spécifiez le type ici
+}
+
+const TopLeft: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
   return (
     <>
       <div className='absolute top-0 left-0 flex items-col items-start'>
@@ -16,12 +20,8 @@ const TopLeft = () => {
           <path fill="url('#grad1')" d="M8 0h292l-20 20H25a5 5 0 0 0-5 5v255L0 300V8a8 8 0 0 1 8-8Z"></path>
         </svg>
 
-        <Header />
-
+        <Header setSelectedComponent={setSelectedComponent} />
       </div>
-
-      <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4 hidden lg:block md:block'>Accueil</h1>
-
     </>
   )
 }

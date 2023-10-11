@@ -2,7 +2,7 @@ import Image from 'next/image';
 import yoan from "../images/yoan-martins.svg";
 import React from 'react';
 
-const Info = () => {
+const Accueil = () => {
   return (
     <>
       <div className="min-h-full flex items-start mt-32">
@@ -23,4 +23,4 @@ const Info = () => {
   )
 }
 
-export default Info;
+export default Accueil;

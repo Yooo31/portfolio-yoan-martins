@@ -1,7 +1,12 @@
+'use client';
+import React, { useState } from "react";
 import Link from "@/node_modules/next/link";
-import React from "react";
 
-const Header = () => {
+interface TopLeftProps {
+  setSelectedComponent: (component: string) => void; // Spécifiez le type ici
+}
+
+const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
   return (
     <header>
       <div className="navbar bg-base-100">
@@ -28,16 +33,16 @@ const Header = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link href="/">Accueil</Link>
+                <a onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
               </li>
               <li>
-                <Link href="/formation">Formation</Link>
+                <a onClick={() => setSelectedComponent('Technos')}>Technos</a>
               </li>
               <li>
-                <Link href="/projets">Projets</Link>
+                <a onClick={() => setSelectedComponent('Projets')}>Projets</a>
               </li>
               <li>
-                <Link href="/contact">Contact</Link>
+                <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
               </li>
             </ul>
           </div>
@@ -45,16 +50,16 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link href="/">Accueil</Link>
+              <a onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
             </li>
             <li>
-              <Link href="/formation">Formation</Link>
+              <a onClick={() => setSelectedComponent('Technos')}>Technos</a>
             </li>
             <li>
-              <Link href="/projets">Projets</Link>
+              <a onClick={() => setSelectedComponent('Projets')}>Projets</a>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
             </li>
           </ul>
         </div>
