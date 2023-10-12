@@ -5,9 +5,14 @@ import React from "react";
 const Projets = () => {
   return (
     <>
-    <div className="flex justify-center m-72">
-      <h2>En construction</h2>
-    </div>
+    <div className="min-h-full flex flex-wrap justify-evenly mt-32">
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+        <div className="project-card bg-indigo-500 rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px]"></div>
+      </div>
     </>
   );
 };

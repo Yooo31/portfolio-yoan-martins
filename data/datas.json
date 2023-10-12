@@ -48,5 +48,14 @@
       "name": "Tailwind",
       "img":"technos/tailwind"
     }
+  ],
+  "Projects":[
+    {
+      "id": "",
+      "title":"",
+      "description":"",
+      "img":"",
+      "url":""
+    }
   ]
 }
