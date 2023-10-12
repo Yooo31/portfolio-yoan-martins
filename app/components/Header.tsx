@@ -9,7 +9,7 @@ interface TopLeftProps {
 const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
   return (
     <header>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 items-start">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,18 +48,18 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal py-0 px-1">
             <li>
-              <a onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
+              <a className="py-0" onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
             </li>
             <li>
-              <a onClick={() => setSelectedComponent('Technos')}>Technos</a>
+              <a className="py-0" onClick={() => setSelectedComponent('Technos')}>Technos</a>
             </li>
             <li>
-              <a onClick={() => setSelectedComponent('Projets')}>Projets</a>
+              <a className="py-0" onClick={() => setSelectedComponent('Projets')}>Projets</a>
             </li>
             <li>
-              <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
+              <a className="py-0" onClick={() => setSelectedComponent('Contact')}>Contact</a>
             </li>
           </ul>
         </div>
