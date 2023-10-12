@@ -4,6 +4,8 @@ import Accueil from '@/app/components/Accueil';
 import Projets from '@/app/components/Projets';
 import TopLeft from '@/app/components/TopLeft';
 import BottomRight from '@/app/components/BottomRight';
+import Technos from '@/app/components/Technos';
+import Contact from '@/app/components/Contact';
 
 export default function Home() {
   const [selectedComponent, setSelectedComponent] = useState('Accueil');
@@ -18,7 +20,9 @@ export default function Home() {
 
           <main className="w-9/12 m-auto h-full">
             {selectedComponent === 'Accueil' && <Accueil />}
+            {selectedComponent === 'Technos' && <Technos />}
             {selectedComponent === 'Projets' && <Projets />}
+            {selectedComponent === 'Contact' && <Contact />}
           </main>
 
           <BottomRight />

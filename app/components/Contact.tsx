@@ -1,8 +1,6 @@
-import Image from "next/image";
-import yoan from "../images/yoan-martins.svg";
 import React from "react";
 
-const Projets = () => {
+const Contact = () => {
   return (
     <>
     <div className="flex justify-center m-72">
@@ -12,4 +10,4 @@ const Projets = () => {
   );
 };
 
-export default Projets;
+export default Contact;
