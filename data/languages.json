@@ -1,50 +1,50 @@
 [
   {
     "name": "Ruby on Rails",
-    "img":"technos/ror"
+    "img":"ror"
   },
   {
     "name": "Jekyll",
-    "img":"technos/jekyll"
+    "img":"jekyll"
   },
   {
     "name": "Ruby",
-    "img":"technos/ruby"
+    "img":"ruby"
   },
   {
     "name": "Python",
-    "img":"technos/python"
+    "img":"python"
   },
   {
     "name": "ReactJS",
-    "img":"technos/recat"
+    "img":"react"
   },
   {
     "name": "NextJS",
-    "img":"technos/next"
+    "img":"next"
   },
   {
     "name": "TypeScript",
-    "img":"technos/typescript"
+    "img":"typescript"
   },
   {
     "name": "php",
-    "img":"technos/php"
+    "img":"php"
   },
   {
     "name": "Docker",
-    "img":"technos/docker"
+    "img":"docker"
   },
   {
     "name": "Cypress",
-    "img":"technos/cypress"
+    "img":"cypress"
   },
   {
     "name": "Bootstrap",
-    "img":"technos/bootstrap"
+    "img":"bootstrap"
   },
   {
     "name": "Tailwind",
-    "img":"technos/tailwind"
+    "img":"tailwind"
   }
 ]
