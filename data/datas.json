@@ -1,0 +1,52 @@
+{
+  "laguage": [
+    {
+      "name": "Ruby on Rails",
+      "img":"technos/ror"
+    },
+    {
+      "name": "Jekyll",
+      "img":"technos/jekyll"
+    },
+    {
+      "name": "Ruby",
+      "img":"technos/ruby"
+    },
+    {
+      "name": "Python",
+      "img":"technos/python"
+    },
+    {
+      "name": "ReactJS",
+      "img":"technos/recat"
+    },
+    {
+      "name": "NextJS",
+      "img":"technos/next"
+    },
+    {
+      "name": "TypeScript",
+      "img":"technos/typescript"
+    },
+    {
+      "name": "php",
+      "img":"technos/php"
+    },
+    {
+      "name": "Docker",
+      "img":"technos/docker"
+    },
+    {
+      "name": "Cypress",
+      "img":"technos/cypress"
+    },
+    {
+      "name": "Bootstrap",
+      "img":"technos/bootstrap"
+    },
+    {
+      "name": "Tailwind",
+      "img":"technos/tailwind"
+    }
+  ]
+}
