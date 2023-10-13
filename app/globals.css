@@ -53,6 +53,15 @@ h2#typing::after {
   animation: cursor 1.5s infinite;
 }
 
+#languages-list img {
+  filter: grayscale(100%);
+  transition: .5s;
+}
+
+#languages-list img:hover {
+  filter: grayscale(0%);
+}
+
 footer {
   color: #FFF;
 }
