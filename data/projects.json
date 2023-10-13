@@ -1,26 +1,26 @@
 [
   {
     "name": "Ruby on Rails",
-    "img":"ror"
+    "img":"kipsoft"
   },
   {
     "name": "Jekyll",
-    "img":"jekyll"
+    "img":"kipsoft"
   },
   {
     "name": "Ruby",
-    "img":"ruby"
+    "img":"kipsoft"
   },
   {
     "name": "Python",
-    "img":"python"
+    "img":"kipsoft"
   },
   {
     "name": "ReactJS",
-    "img":"react"
+    "img":"kipsoft"
   },
   {
     "name": "NextJS",
-    "img":"next"
+    "img":"kipsoft"
   }
 ]
