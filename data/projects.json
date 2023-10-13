@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Ruby on Rails",
+    "img":"ror"
+  },
+  {
+    "name": "Jekyll",
+    "img":"jekyll"
+  },
+  {
+    "name": "Ruby",
+    "img":"ruby"
+  },
+  {
+    "name": "Python",
+    "img":"python"
+  },
+  {
+    "name": "ReactJS",
+    "img":"react"
+  },
+  {
+    "name": "NextJS",
+    "img":"next"
+  }
+]
