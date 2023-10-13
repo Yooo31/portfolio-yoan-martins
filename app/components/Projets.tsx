@@ -5,7 +5,7 @@ import React from "react";
 const Projets = () => {
   return (
     <>
-    <div className="flex justify-center m-72">
+    <div className="flex justify-center">
       <h2>En construction</h2>
     </div>
     </>

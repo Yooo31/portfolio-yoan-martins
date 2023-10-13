@@ -55,6 +55,7 @@ h2#typing::after {
 
 #languages-list img {
   filter: grayscale(100%);
+  transition: .5s;
 }
 
 #languages-list img:hover {
