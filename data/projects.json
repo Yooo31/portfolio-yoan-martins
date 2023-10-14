@@ -1,26 +1,101 @@
 [
   {
-    "name": "Ruby on Rails",
-    "img":"kipsoft"
+    "name": "Kipsoft",
+    "description": "Le site statique de l'entreprsie Kipsoft",
+    "logo": "kipsoft-logo.png",
+    "img":"kipsoft.png",
+    "technos": [
+      "Jekyll",
+      "Bootstrap"
+    ],
+    "url": "https://kipsoft.fr"
   },
   {
-    "name": "Jekyll",
-    "img":"kipsoft"
+    "name": "KPulse",
+    "description": "Le site statique d'un logiciel de gestion'",
+    "logo": "kpulse-logo.png",
+    "img":"kpulse.png",
+    "technos": [
+      "Jekyll",
+      "Bootstrap"
+    ],
+    "url": "https://kpulse.fr"
   },
   {
-    "name": "Ruby",
-    "img":"kipsoft"
+    "name": "Klipp",
+    "description": "Le site statique de la partie espace client du logiciel KPulse",
+    "logo": "klipp-logo.png",
+    "img":"klipp.png",
+    "technos": [
+      "Jekyll",
+      "Bootstrap"
+    ],
+    "url": "https://klipp.space"
   },
   {
-    "name": "Python",
-    "img":"kipsoft"
+    "name": "GeoSquare",
+    "description": "Le site statique du logiciel geotechnique GeoSquare",
+    "logo": "geosquare-logo.png",
+    "img":"geosquare.png",
+    "technos": [
+      "Jekyll",
+      "Bootstrap"
+    ],
+    "url": "https://geosquare.fr"
   },
   {
-    "name": "ReactJS",
-    "img":"kipsoft"
+    "name": "ipSYS",
+    "description": "Le site statique de l'entreprsie ipSYS",
+    "logo": "ipsys-logo.png",
+    "img":"ipsys.png",
+    "technos": [
+      "wordpress"
+    ],
+    "url": "https://ipsys.fr"
   },
   {
-    "name": "NextJS",
-    "img":"kipsoft"
+    "name": "RCSP Results",
+    "description": "Un site qui affiche les résultats et match à venir de l'équipe de rugby RCSP",
+    "logo": "rcsp-logo.png",
+    "img":"rcsp.png",
+    "technos": [
+      "ReactJS",
+      "Tailwind",
+      "FFR API"
+    ],
+    "url": "https://losbourriquots.fr"
+  },
+  {
+    "name": "ToDo Next",
+    "description": "Une todo list basique pour apprendre le NextJS",
+    "logo": "todo-logo.png",
+    "img":"todo.png",
+    "technos": [
+      "NextJS",
+      "Tailwind CSS"
+    ],
+    "url": null
+  },
+  {
+    "name": "Los Bourriquots",
+    "description": "Une boutique en ligne pour l'amicale des joueurs du RCSP (site e-commerce)",
+    "logo": "losbourriquots-logo.png",
+    "img":"losbourriquots.png",
+    "technos": [
+      "Ruby on Rails",
+      "Bootstrap",
+      "Docker"
+    ],
+    "url": null
+  },
+  {
+    "name": "YourNews",
+    "description": "Une application en php pur réalisée lors du projet annuel de ma 2ème année de bachelor à l'ESGI. C'est un site de type blog ou l'on peut se créer un compte, ajouter des posts...",
+    "logo": "yournews-logo.png",
+    "img":"yournews.png",
+    "technos": [
+      "php"
+    ],
+    "url": "https://github.com/Yooo31/YourNews"
   }
 ]

@@ -33,6 +33,10 @@ body {
   margin: 0;
 }
 
+.modal-box {
+  background: #1E1E1E;
+}
+
 h1,h2 {
   font-weight: 100
 }
