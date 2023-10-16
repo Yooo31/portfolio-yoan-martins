@@ -28,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
         <button onClick={() => setModalOpen(false)} className="btn btn-circle btn-ghost absolute text-4xl right-2 top-2">
           ✕
         </button>
-        <img src={`/images/projects/${selectedProject.img}`} alt="Shoes" />
+        <img className="w-100" src={`/images/projects/${selectedProject.img}`} alt={selectedProject.name} />
         <div className="card-body">
           <h2 className="card-title">
             {selectedProject.name}

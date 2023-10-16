@@ -18,7 +18,7 @@ export default function Home() {
 
           <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4 hidden lg:block md:block'>{ selectedComponent }</h1>
 
-          <main className="w-9/12 m-auto h-full flex justify-center items-center z-10">
+          <main className="w-9/12 m-auto h-full flex justify-center items-center z-60">
             {selectedComponent === 'Accueil' && <Accueil />}
             {selectedComponent === 'Technos' && <Technos />}
             {selectedComponent === 'Projets' && <Projets />}
