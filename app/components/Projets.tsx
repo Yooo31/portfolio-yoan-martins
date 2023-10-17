@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LanguagesData from "@/data/projects.json";
 import Modal from "@/app/components/Modal";
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Projets = () => {
   const data = LanguagesData;
@@ -16,6 +19,13 @@ const Projets = () => {
     setModalOpen(true);
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      offset: 10,
+    });
+  }, []);
+
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
   const currentProjects = data.slice(indexOfFirstProject, indexOfLastProject);
@@ -25,7 +35,7 @@ const Projets = () => {
   return (
     <div className="min-h-full flex flex-wrap place-content-around">
       {currentProjects.map((element, index) => (
-        <div key={index} className="rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px] flex flex-col-reverse group">
+        <div data-aos="zoom-in-up" key={index} className="rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px] flex flex-col-reverse group">
           <button className="h-full w-full" onClick={() => openModal(element)}>
             <div className="card w-full h-full bg-base-100 shadow-xl image-full">
               <figure><img className="group-hover:opacity-25 transition-opacity duration-500" src={`/images/projects/${element.logo}`} alt={element.name} /></figure>
@@ -39,7 +49,7 @@ const Projets = () => {
 
       <Modal ModalOpen={ModalOpen} setModalOpen={setModalOpen} selectedProject={selectedProject} />
 
-      <div className="z-[60] ml-auto join">
+      <div className="z-[70] ml-auto join">
         {Array.from({ length: totalPages }, (_, i) => (
           <button className={`join-item btn ${currentPage === i + 1 ? "btn-active" : ""}`} key={i} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
         ))}

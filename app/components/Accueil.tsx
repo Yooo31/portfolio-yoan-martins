@@ -1,13 +1,23 @@
 import Image from 'next/image';
 import yoan from "../images/yoan-martins.svg";
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Accueil = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      offset: 10,
+    });
+  }, []);
+
   return (
     <>
       <div className="min-h-full flex items-center mb-32">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <Image className="max-w-sm rounded-lg shadow-2xl" src={yoan} alt="Yoan Martins" width={200} height={200} />
+          <Image data-aos="fade-down-left" className="max-w-sm rounded-lg shadow-2xl" src={yoan} alt="Yoan Martins" width={200} height={200} />
 
           <div className='flex flex-col'>
             <div className='flex justify-start'>
