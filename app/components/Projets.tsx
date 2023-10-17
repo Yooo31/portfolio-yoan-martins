@@ -33,23 +33,25 @@ const Projets = () => {
   const totalPages = Math.ceil(data.length / projectsPerPage);
 
   return (
-    <div className="min-h-full flex flex-wrap place-content-around">
-      {currentProjects.map((element, index) => (
-        <div data-aos="zoom-in-up" key={index} className="rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px] flex flex-col-reverse group">
-          <button className="h-full w-full" onClick={() => openModal(element)}>
-            <div className="card w-full h-full bg-base-100 shadow-xl image-full">
-              <figure><img className="group-hover:opacity-25 transition-opacity duration-500" src={`/images/projects/${element.logo}`} alt={element.name} /></figure>
-              <div className="card-body flex-col-reverse">
-                <h2 className="card-title text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">{element.name}</h2>
+    <div className="flex flex-col">
+      <div className="min-h-full flex flex-wrap place-content-around">
+        {currentProjects.map((element, index) => (
+          <div data-aos="zoom-in-up" key={index} className="rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px] flex flex-col-reverse group">
+            <button className="h-full w-full" onClick={() => openModal(element)}>
+              <div className="card w-full h-full bg-base-100 shadow-xl image-full">
+                <figure><img className="group-hover:opacity-25 transition-opacity duration-500" src={`/images/projects/${element.logo}`} alt={element.name} /></figure>
+                <div className="card-body flex-col-reverse">
+                  <h2 className="card-title text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">{element.name}</h2>
+                </div>
               </div>
-            </div>
-          </button>
-        </div>
-      ))}
+            </button>
+          </div>
+        ))}
 
-      <Modal ModalOpen={ModalOpen} setModalOpen={setModalOpen} selectedProject={selectedProject} />
+        <Modal ModalOpen={ModalOpen} setModalOpen={setModalOpen} selectedProject={selectedProject} />
 
-      <div className="z-[70] ml-auto join">
+      </div>
+      <div className="z-[70] mt-10 ml-auto join">
         {Array.from({ length: totalPages }, (_, i) => (
           <button className={`join-item btn ${currentPage === i + 1 ? "btn-active" : ""}`} key={i} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
         ))}
