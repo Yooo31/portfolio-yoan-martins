@@ -39,7 +39,7 @@ const Projets = () => {
 
       <Modal ModalOpen={ModalOpen} setModalOpen={setModalOpen} selectedProject={selectedProject} />
 
-      <div className="join">
+      <div className="z-[60] ml-auto join">
         {Array.from({ length: totalPages }, (_, i) => (
           <button className={`join-item btn ${currentPage === i + 1 ? "btn-active" : ""}`} key={i} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
         ))}

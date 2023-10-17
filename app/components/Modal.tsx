@@ -24,11 +24,11 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
 
   return (
     <dialog id="my_modal_3" className={`modal ${ModalOpen ? "modal-open" : ""}`}>
-      <div className="modal-box max-w-full w-1/2">
+      <div className="modal-box max-w-full w-1/2 z-[60]">
         <button onClick={() => setModalOpen(false)} className="btn btn-circle btn-ghost absolute text-4xl right-2 top-2">
           ✕
         </button>
-        <img className="w-100" src={`/images/projects/${selectedProject.img}`} alt={selectedProject.name} />
+        <img className="mx-auto w-100" src={`/images/projects/${selectedProject.img}`} alt={selectedProject.name} />
         <div className="card-body">
           <h2 className="card-title">
             {selectedProject.name}
@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
             </div>
             <div className="underline underline-offset-4 decoration-1 hover:decoration-2">
               {selectedProject.url !== null && (
-                <Link target="_blank" href={selectedProject.url}> <BiLinkExternal className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                <Link rel="nofollow" target="_blank" href={selectedProject.url}> <BiLinkExternal className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
               )}
             </div>
           </div>
