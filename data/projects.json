@@ -49,7 +49,7 @@
     "logo": "ipsys-logo.png",
     "img":"ipsys.png",
     "technos": [
-      "wordpress"
+      "Wordpress"
     ],
     "url": "https://ipsys.fr"
   },
@@ -97,5 +97,35 @@
       "php"
     ],
     "url": "https://github.com/Yooo31/YourNews"
+  },
+  {
+    "name": "Entraide46",
+    "description": "Le site d'une association. On y trouve des ofres d'emploies, des informations sur la société et des formulaires de contact",
+    "logo": "entraide46-logo.jpg",
+    "img":"entraide.png",
+    "technos": [
+      "Wordpress"
+    ],
+    "url": "http://www.entraide46.fr/"
+  },
+  {
+    "name": "CESDDA",
+    "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C'est un site explicatif, où l'on peut y faire des réservations, et contact.",
+    "logo": "cesdda-logo.png",
+    "img":"cesdda.png",
+    "technos": [
+      "Wordpress"
+    ],
+    "url": "https://cesdda.fr/"
+  },
+  {
+    "name": "L'armore de marie",
+    "description": "L'armoire de marie est mon tout premier site réaliser, c'est un site vitrine pour une boutique de vêtement.",
+    "logo": "armoire-de-marie-logo.png",
+    "img":"armoire-de-marie.png",
+    "technos": [
+      "Wordpress"
+    ],
+    "url": "https://l-armoire-de-marie.fr/"
   }
 ]

@@ -119,3 +119,7 @@ footer {
   -webkit-transform: scale(1.5) !important;
   transform: scale(1.5) !important;
 }
+
+.card.image-full > figure img {
+  object-fit: none !important;
+}
