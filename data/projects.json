@@ -1,7 +1,7 @@
 [
   {
     "name": "Kipsoft",
-    "description": "Le site statique de l'entreprsie Kipsoft",
+    "description": "Le site statique de l&apos;entreprsie Kipsoft",
     "logo": "kipsoft-logo.png",
     "img":"kipsoft.png",
     "technos": [
@@ -12,7 +12,7 @@
   },
   {
     "name": "KPulse",
-    "description": "Le site statique d'un logiciel de gestion'",
+    "description": "Le site statique d&apos;un logiciel de gestion",
     "logo": "kpulse-logo.png",
     "img":"kpulse.png",
     "technos": [
@@ -45,7 +45,7 @@
   },
   {
     "name": "ipSYS",
-    "description": "Le site statique de l'entreprsie ipSYS",
+    "description": "Le site statique de l&apos;entreprsie ipSYS",
     "logo": "ipsys-logo.png",
     "img":"ipsys.png",
     "technos": [
@@ -55,7 +55,7 @@
   },
   {
     "name": "RCSP Results",
-    "description": "Un site qui affiche les résultats et match à venir de l'équipe de rugby RCSP",
+    "description": "Un site qui affiche les résultats et match à venir de l&apos;équipe de rugby RCSP",
     "logo": "rcsp-logo.png",
     "img":"rcsp.png",
     "technos": [
@@ -78,7 +78,7 @@
   },
   {
     "name": "Los Bourriquots",
-    "description": "Une boutique en ligne pour l'amicale des joueurs du RCSP (site e-commerce)",
+    "description": "Une boutique en ligne pour l&apos;amicale des joueurs du RCSP (site e-commerce)",
     "logo": "losbourriquots-logo.png",
     "img":"losbourriquots.png",
     "technos": [
@@ -90,7 +90,7 @@
   },
   {
     "name": "YourNews",
-    "description": "Une application en php pur réalisée lors du projet annuel de ma 2ème année de bachelor à l'ESGI. C'est un site de type blog ou l'on peut se créer un compte, ajouter des posts...",
+    "description": "Une application en php pur réalisée lors du projet annuel de ma 2ème année de bachelor à l&apos;ESGI. C&apos;est un site de type blog ou l&apos;on peut se créer un compte, ajouter des posts...",
     "logo": "yournews-logo.png",
     "img":"yournews.png",
     "technos": [
@@ -100,7 +100,7 @@
   },
   {
     "name": "Entraide46",
-    "description": "Le site d'une association. On y trouve des ofres d'emploies, des informations sur la société et des formulaires de contact",
+    "description": "Le site d&apos;une association. On y trouve des ofres d&apos;emploies, des informations sur la société et des formulaires de contact",
     "logo": "entraide46-logo.jpg",
     "img":"entraide.png",
     "technos": [
@@ -110,7 +110,7 @@
   },
   {
     "name": "CESDDA",
-    "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C'est un site explicatif, où l'on peut y faire des réservations, et contact.",
+    "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C&apos;est un site explicatif, où l&apos;on peut y faire des réservations, et contact.",
     "logo": "cesdda-logo.png",
     "img":"cesdda.png",
     "technos": [
@@ -119,8 +119,8 @@
     "url": "https://cesdda.fr/"
   },
   {
-    "name": "L'armore de marie",
-    "description": "L'armoire de marie est mon tout premier site réaliser, c'est un site vitrine pour une boutique de vêtement.",
+    "name": "L&apos;armore de marie",
+    "description": "L&apos;armoire de marie est mon tout premier site réaliser, c&apos;est un site vitrine pour une boutique de vêtement.",
     "logo": "armoire-de-marie-logo.png",
     "img":"armoire-de-marie.png",
     "technos": [

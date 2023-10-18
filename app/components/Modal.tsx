@@ -16,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
           <button onClick={() => setModalOpen(false)} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
           </button>
-          <p>Erreur de chargement lors de l'ouverture du projet</p>
+          <p>Erreur de chargement lors de l&apos;ouverture du projet</p>
         </div>
       </dialog>
     );
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
           <p>{selectedProject.description}</p>
           <div className="card-actions justify-between mt-5">
             <div className="justify-start">
-              {selectedProject.technos.map((element, index) => (
+              {selectedProject.technos.map((element: string, index: number) => (
                 <div key={index} className="badge badge-outline mr-3">{element}</div>
               ))}
             </div>

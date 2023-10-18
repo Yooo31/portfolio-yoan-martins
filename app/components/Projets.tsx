@@ -5,16 +5,25 @@ import Modal from "@/app/components/Modal";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+interface Project {
+  name: string;
+  description: string;
+  logo: string;
+  img: string;
+  technos: string[];
+  url: string | null;
+}
+
 const Projets = () => {
   const data = LanguagesData;
 
   const [ModalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>();
 
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
 
-  const openModal = (project) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
     setModalOpen(true);
   };
