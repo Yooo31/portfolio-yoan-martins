@@ -1,6 +1,7 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage, FormikValues } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { sendMessageToTelegram } from '@/app/services/TelegramBot';
 
 interface FormValues {
   last_name: string;
@@ -28,7 +29,8 @@ const FormView: React.FC = () => {
   });
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    const message = `Nouveau message de ${values.last_name} ${values.first_name} (${values.mail}, ${values.tel}):\n${values.message}`;
+    sendMessageToTelegram(message);
   };
 
   return (
