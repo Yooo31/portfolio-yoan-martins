@@ -28,7 +28,7 @@ const Accueil = () => {
                 <h2 id="typing" className="text-2xl md:text-5xl font-bold overflow-hidden whitespace-nowrap relative">Hello World !!!</h2>
               </div>
             </div>
-            <p className="py-6 text-sm md:text-base mr-0 md:mr-20">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p className="py-6 text-sm md:text-base mr-0 md:mr-20">My name is Yoan Martins, I am 20 years old. I am studying to become a full-stack developer. I am passionate about IT and rugby. See you soon !</p>
           </div>
         </div>
       </div>
