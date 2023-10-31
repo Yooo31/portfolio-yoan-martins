@@ -42,7 +42,7 @@ h1,h2 {
 }
 
 h2#typing {
-  animation: typing 12s infinite steps(15);
+  animation: typing 8s infinite steps(15);
 }
 
 h2#typing::after {
@@ -82,7 +82,7 @@ footer {
   50% {
     width: 100%;
   }
-  60% {
+  70% {
     width: 100%;
   }
   90% {
