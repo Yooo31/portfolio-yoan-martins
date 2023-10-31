@@ -62,7 +62,7 @@ const Projets = () => {
       </div>
       <div className="z-[70] mt-10 ml-auto join">
         {Array.from({ length: totalPages }, (_, i) => (
-          <button className={`join-item btn ${currentPage === i + 1 ? "btn-active" : ""}`} key={i} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
+          <button className={`transition-transform hover:scale-105 join-item btn ${currentPage === i + 1 ? "btn-active" : ""}`} key={i} onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
         ))}
       </div>
     </div>

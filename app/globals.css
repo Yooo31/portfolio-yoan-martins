@@ -123,3 +123,15 @@ footer {
 .card.image-full > figure img {
   object-fit: none !important;
 }
+
+.btn-active {
+  background-color: #e5e7eb;
+  color: #1E1E1E;
+  border: #e5e7eb;
+}
+
+.btn-active:hover {
+  background-color: #e5e7eb;
+  color: #1E1E1E;
+  border: #e5e7eb;
+}
