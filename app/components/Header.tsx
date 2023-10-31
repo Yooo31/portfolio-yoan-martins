@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import Link from "@/node_modules/next/link";
+import { BsGithub, BsLinkedin, BsFillEnvelopeFill } from 'react-icons/bs';
 
 interface TopLeftProps {
   setSelectedComponent: (component: string) => void; // Spécifiez le type ici
@@ -44,22 +45,31 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
               <li>
                 <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
               </li>
+              <li className='px-4 ml-5'>
+                <Link target="_blank" href="https://github.com/Yooo31/"><BsGithub className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+              </li>
+              <li className='px-4 ml-5'>
+                <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/"><BsLinkedin className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+              </li>
+              <li className='px-4 ml-5'>
+                <Link target="_blank" href="mailto:mrts.yoan@gmail.com"><BsFillEnvelopeFill className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+              </li>
             </ul>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal py-0 px-1">
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Technos')}>Technos</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Technos')}>Technos</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Projets')}>Projets</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Projets')}>Projets</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Contact')}>Contact</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Contact')}>Contact</a>
             </li>
           </ul>
         </div>
