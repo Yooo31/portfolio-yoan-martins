@@ -50,16 +50,16 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal py-0 px-1">
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Technos')}>Technos</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Technos')}>Technos</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Projets')}>Projets</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Projets')}>Projets</a>
             </li>
             <li>
-              <a className="py-0" onClick={() => setSelectedComponent('Contact')}>Contact</a>
+              <a className="py-0 transition-transform hover:scale-105" onClick={() => setSelectedComponent('Contact')}>Contact</a>
             </li>
           </ul>
         </div>
