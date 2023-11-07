@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { TelegramService } from '@/app/services/TelegramService';
@@ -13,6 +13,8 @@ interface FormValues {
 }
 
 const FormView: React.FC = () => {
+  const [submissionResult, setSubmissionResult] = useState<string | null>(null);
+
   const initialValues: FormValues = {
     last_name: '',
     first_name: '',
@@ -30,10 +32,26 @@ const FormView: React.FC = () => {
     message: Yup.string().required('Le message est requis...'),
   });
 
-  const onSubmit = (values: FormValues) => {
-    let message = ` \n👫 ${values.last_name} ${values.first_name}\n✉️ ${values.mail}\n📱 ${values.tel}\n\n📝 Contenu :\n${values.message}`;
-    TelegramService.sendMessage(message);
+  console.log(submissionResult);
+
+  const onSubmit = async (values: FormValues) => {
+    try {
+      let message = ` \n👫 ${values.last_name} ${values.first_name}\n✉️ ${values.mail}\n📱 ${values.tel}\n\n📝 Contenu :\n${values.message}`;
+      const response = await TelegramService.sendMessage(message);
+  
+      if (response.status === 200) {
+        // La soumission a réussi (statut 200 OK).
+        setSubmissionResult('success');
+      } else {
+        // La soumission a échoué (autre statut HTTP, par exemple, erreur 500).
+        setSubmissionResult('error');
+      }
+    } catch (error) {
+      // Une erreur s'est produite lors de la soumission.
+      setSubmissionResult('error');
+    }
   };
+
 
   return (
       <Formik
@@ -85,6 +103,19 @@ const FormView: React.FC = () => {
 
             <button type="submit" className="btn btn-primary ms-5 mt-5">Envoyer</button>
           </div>
+          {submissionResult === 'success' && (
+            <div className="alert alert-success">
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Your purchase has been confirmed!</span>
+            </div>
+          )}
+
+          {submissionResult === 'error' && (
+            <div className="alert alert-error">
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Error! Task failed successfully.</span>
+            </div>
+          )}
         </Form>
       </Formik>
   );

@@ -22,5 +22,6 @@ export class TelegramService {
 
     const responseText = await res.text();
     console.log(responseText);
+    return {status: res.status};
   }
 }
