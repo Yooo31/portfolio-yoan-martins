@@ -1,21 +1,26 @@
 export class TelegramService {
+  private static readonly apiUrl = 'https://ym-telegram.yoanmartins.fr/sendMessage';
+
   static async sendMessage(message: string) {
-    const res = await fetch('https://ym-telegram.yoanmartins.fr/sendMessage', {
+    const requestBody = {
+      bot: null,
+      canal: null,
+      config: 'portfolio-yoan',
+      info: {
+        name: "Yoan",
+        text: message,
+      },
+    };
+
+    const res = await fetch(TelegramService.apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(
-        { bot: "fgtyhdnjkl",
-          canal: "sdefrgtik",
-          info: {
-            name: "Yoan",
-            text: "fghjkggggg"
-          }
-        }
-      ),
-    })
-    const data = await res.json();
-    console.log(data);
+      body: JSON.stringify(requestBody),
+    });
+
+    const responseText = await res.text();
+    console.log(responseText);
   }
 }
