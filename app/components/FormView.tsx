@@ -30,7 +30,7 @@ const FormView: React.FC = () => {
   });
 
   const onSubmit = (values: FormValues) => {
-    let message = `Nouveau message de ${values.last_name} ${values.first_name} (${values.mail}, ${values.tel}):\n${values.message}`;
+    let message = `👫 ${values.last_name} ${values.first_name}\n✉️ (${values.mail}\n📱 ${values.tel}):\n${values.message}`;
     TelegramService.sendMessage(message);
   };
 

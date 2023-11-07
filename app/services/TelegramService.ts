@@ -7,7 +7,7 @@ export class TelegramService {
       canal: null,
       config: 'portfolio-yoan',
       info: {
-        name: "Yoan",
+        name: "🚨 Nouvelle demande de contact ! 🚨",
         text: message,
       },
     };
