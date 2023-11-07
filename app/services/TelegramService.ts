@@ -5,7 +5,7 @@ export class TelegramService {
     const requestBody = {
       bot: null,
       canal: null,
-      config: 'portfolio-yoan',
+      config: 'portfolio-yoana',
       info: {
         name: "🚨 Nouvelle demande de contact ! 🚨",
         text: message,
