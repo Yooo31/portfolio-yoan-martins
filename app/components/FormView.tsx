@@ -101,7 +101,7 @@ const FormView: React.FC<FormViewProps> = ({ onSubmissionResultChange }) => {
               <ErrorMessage name="message" component="div" className="text-red-500 py-2.5" />
             </div>
 
-            <button type="submit" className="btn btn-primary ms-5 mt-5">Envoyer</button>
+            <button type="submit" className="btn btn-outline ms-5 mt-5">Envoyer</button>
           </div>
         </Form>
       </Formik>

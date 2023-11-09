@@ -12,7 +12,16 @@ const config: Config = {
     require("daisyui")
   ],
   daisyui: {
-    themes: []
+    themes: [
+      {
+        dark: {
+          "info": "#1c67f2",
+          "success": "#1ab373",
+          "warning": "#f98c1f",
+          "error": "#e3524a",
+        },
+      },
+    ]
   }
 }
 export default config

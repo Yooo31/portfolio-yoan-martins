@@ -17,7 +17,7 @@ const Technos = () => {
 
   return (
     <>
-    <div id="languages-list" className="h-5/6 flex justify-center">
+    <div id="languages-list" className="z-50 h-5/6 flex justify-center">
       <div className="flex flex-wrap -mx-4">
         { data.map((element, index) => (
           <div data-aos="zoom-in-up" key={index} className="w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4 flex justify-center">
