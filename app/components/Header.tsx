@@ -9,7 +9,7 @@ interface TopLeftProps {
 
 const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
   return (
-    <header className="z-50 w-full">
+    <header className="z-50 w-full sm:w-auto lg:w-auto">
       <div className="navbar bg-base-100 items-start w-full">
         <div className="navbar-start w-full">
           <div className="dropdown w-full">
