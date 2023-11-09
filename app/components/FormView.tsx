@@ -69,7 +69,7 @@ const FormView: React.FC<FormViewProps> = ({ onSubmissionResultChange }) => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        <Form className='w-full z-50'>
+        <Form className='w-full z-40'>
           <div className="w-full flex flex-wrap">
             <div className='w-full md:w-1/2 lg:w-1/2 py-2.5 px-5'>
               <label className="label">

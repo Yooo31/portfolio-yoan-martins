@@ -9,10 +9,10 @@ interface TopLeftProps {
 
 const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
   return (
-    <header className="z-50">
-      <div className="navbar bg-base-100 items-start">
-        <div className="navbar-start">
-          <div className="dropdown">
+    <header className="z-50 w-full">
+      <div className="navbar bg-base-100 items-start w-full">
+        <div className="navbar-start w-full">
+          <div className="dropdown w-full">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -29,32 +29,36 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
                 />
               </svg>
             </label>
-            <ul
+            <div
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="w-full menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box flex flex-row justify-around"
             >
-              <li>
-                <a onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
-              </li>
-              <li>
-                <a onClick={() => setSelectedComponent('Technos')}>Technos</a>
-              </li>
-              <li>
-                <a onClick={() => setSelectedComponent('Projets')}>Projets</a>
-              </li>
-              <li>
-                <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
-              </li>
-              <li className='px-4 ml-5'>
-                <Link target="_blank" href="https://github.com/Yooo31/"><BsGithub className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
-              </li>
-              <li className='px-4 ml-5'>
-                <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/"><BsLinkedin className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
-              </li>
-              <li className='px-4 ml-5'>
-                <Link target="_blank" href="mailto:mrts.yoan@gmail.com"><BsFillEnvelopeFill className="transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
-              </li>
-            </ul>
+              <ul className="w-1/3">
+                <li>
+                  <a onClick={() => setSelectedComponent('Accueil')}>Accueil</a>
+                </li>
+                <li>
+                  <a onClick={() => setSelectedComponent('Technos')}>Technos</a>
+                </li>
+                <li>
+                  <a onClick={() => setSelectedComponent('Projets')}>Projets</a>
+                </li>
+                <li>
+                  <a onClick={() => setSelectedComponent('Contact')}>Contact</a>
+                </li>
+              </ul>
+              <ul className="w-2/3 flex items-center">
+                <li className='inline-block'>
+                  <Link target="_blank" href="https://github.com/Yooo31/"><BsGithub className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                </li>
+                <li className='inline-block'>
+                  <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/"><BsLinkedin className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                </li>
+                <li className='inline-block'>
+                  <Link target="_blank" href="mailto:mrts.yoan@gmail.com"><BsFillEnvelopeFill className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
