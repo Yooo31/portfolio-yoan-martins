@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="block box-border fixed top-0 bottom-0 left-0 right-0 overflow-y-auto">
       <div className="h-full box-border flex justify-center items-start md:h-screen md:max-h-screen md:items-center md:overflow-hidden">
-        <div className="w-screen max-w-[1280px] box-border mt-0 mb-0 p-7 flex relative md:max-h-[790px] h-screen md:h-full sm:h-screen sm:p-[20px]">
+        <div className="w-screen max-w-[1280px] flex-col box-border mt-0 mb-0 p-7 flex relative md:max-h-[790px] h-screen md:h-full sm:h-screen sm:p-[20px]">
           <TopLeft setSelectedComponent={setSelectedComponent} />
 
           <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4 hidden lg:block md:block'>{ selectedComponent }</h1>
