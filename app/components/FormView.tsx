@@ -26,6 +26,8 @@ const FormView: React.FC<FormViewProps> = ({ onSubmissionResultChange }) => {
     message: '',
   };
 
+  const [isClicked, setIsClicked] = useState(false);
+
   const phoneRegExp = /^(\+[1-9]{1,4}[ \-]*)?(\([0-9]{2,3}\)[ \-]*)?([0-9]{2,4}[ \-]*){4}[0-9]{2,4}$/;
   const validationSchema = Yup.object({
     last_name: Yup.string().required('Le nom est requis...'),
@@ -36,16 +38,24 @@ const FormView: React.FC<FormViewProps> = ({ onSubmissionResultChange }) => {
   });
 
   const onSubmit = async (values: FormValues) => {
+    setIsClicked(true);
+    console.log(isClicked);
     try {
       let message = ` \n👫 ${values.last_name} ${values.first_name}\n✉️ ${values.mail}\n📱 ${values.tel}\n\n📝 Contenu :\n${values.message}`;
       const response = await TelegramService.sendMessage(message);
       if (response.status === 200) {
         onSubmissionResultChange('success');
+        setIsClicked(false);
+        console.log(isClicked);
       } else {
         onSubmissionResultChange('error');
+        setIsClicked(false);
+        console.log(isClicked);
       }
     } catch (error) {
       onSubmissionResultChange('error');
+      setIsClicked(false);
+      console.log(isClicked);
     }
   };
 
@@ -101,7 +111,8 @@ const FormView: React.FC<FormViewProps> = ({ onSubmissionResultChange }) => {
               <ErrorMessage name="message" component="div" className="text-red-500 py-2.5" />
             </div>
 
-            <button type="submit" className="btn btn-outline ms-5 mt-5">Envoyer</button>
+            {isClicked && <span className="loading loading-spinner loading-lg ms-5 mt-5"></span>}
+            {!isClicked && <button type="submit" className="btn btn-outline ms-5 mt-5">Envoyer</button>}
           </div>
         </Form>
       </Formik>
