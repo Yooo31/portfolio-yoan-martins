@@ -15,17 +15,6 @@ h1 {
   color: rgba(255, 255, 255, 0.25);
 }
 
-.nav li {
-  color: #9A9A9A;
-  font-size: 18px;
-  border-bottom: 1px solid #FFFFFF;
-}
-
-.nav .active {
-  color: #FFFFFF;
-  border-bottom: 1px solid blue;
-}
-
 body {
   color: #d1d1d1;
   background: #1E1E1E;
@@ -125,13 +114,17 @@ footer {
 }
 
 .btn-active {
-  background-color: #e5e7eb;
-  color: #1E1E1E;
-  border: #e5e7eb;
+  background-color: #e5e7eb !important;
+  color: #1E1E1E !important;
+  border: #e5e7eb !important;
 }
 
 .btn-active:hover {
-  background-color: #e5e7eb;
-  color: #1E1E1E;
-  border: #e5e7eb;
+  background-color: #e5e7eb !important;
+  color: #1E1E1E !important;
+  border: #e5e7eb !important;
+}
+
+.btn-outline:hover {
+  background: none;
 }
