@@ -11,13 +11,7 @@ main {
   display: block
 }
 
-h1 {
-  color: rgba(255, 255, 255, 0.25);
-}
-
 body {
-  color: #d1d1d1;
-  background: #1E1E1E;
   font-family: IBM Plex Mono, monospace !important;
   margin: 0;
 }
@@ -58,10 +52,6 @@ h2#typing::after {
 #project-list:hover h2 {
   transition: 1s;
   display: block;
-}
-
-footer {
-  color: #FFF;
 }
 
 @keyframes typing {
@@ -127,4 +117,11 @@ footer {
 
 .btn-outline:hover {
   background: none;
+}
+
+/* DaisyUI */
+
+.text-accent {
+  --tw-text-opacity: 0.25;
+  color: hsl(var(--a) / var(--tw-text-opacity));
 }

@@ -10,7 +10,7 @@ export default function ThemeMode() {
   const [theme, setTheme] = useState(storedTheme);
 
   const handleToggle = () => {
-    setTheme((prevTheme) => (prevTheme === 'valentine' ? 'dark' : 'valentine'));
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   useEffect(() => {

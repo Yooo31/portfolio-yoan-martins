@@ -16,7 +16,7 @@ export default function Home() {
           <div className="w-screen max-w-[1280px] flex-col box-border mt-0 mb-0 p-7 flex relative md:max-h-[790px] h-screen md:h-full sm:h-screen sm:p-[20px]">
             <TopLeft setSelectedComponent={setSelectedComponent} />
 
-            <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] translate-x-1/4 hidden lg:block md:block'>{selectedComponent}</h1>
+            <h1 className='m-0 -rotate-90 absolute bottom-0 left-0 origin-bottom-left text-[100px] text-accent translate-x-1/4 hidden lg:block md:block'>{selectedComponent}</h1>
 
             <main className="w-full md:w-9/12 lg:w-9/12 m-auto flex justify-center items-center">
               {selectedComponent === 'Accueil' && <Accueil />}
