@@ -32,7 +32,7 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
             </label>
             <div
               tabIndex={0}
-              className="w-full menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box flex flex-row justify-around"
+              className="w-full menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box flex flex-row justify-around text-white"
             >
               <ul className="w-1/3">
                 <li>
