@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject 
   }
 
   return (
-    <dialog id="my_modal_3" className={`modal ${ModalOpen ? "modal-open" : ""}`}>
+    <dialog id="my_modal_3" className={`text-white modal ${ModalOpen ? "modal-open" : ""}`}>
       <div className="modal-box max-w-full w-3/4 sm:w-1/2 lg:w-1/2 z-[60]">
         <button onClick={() => setModalOpen(false)} className="btn btn-circle btn-ghost absolute text-4xl right-2 top-2">
           ✕

@@ -125,3 +125,6 @@ h2#typing::after {
   --tw-text-opacity: 0.25;
   color: hsl(var(--a) / var(--tw-text-opacity));
 }
+.text-white {
+  color: #d1d1d1;
+}
