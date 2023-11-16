@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "@/node_modules/next/link";
 import { BsGithub, BsLinkedin, BsFillEnvelopeFill } from 'react-icons/bs';
+import ThemeMode from "@/app/components/ThemeMode";
 
 interface TopLeftProps {
   setSelectedComponent: (component: string) => void; // Spécifiez le type ici
@@ -49,13 +50,16 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
               </ul>
               <ul className="w-2/3 flex items-center">
                 <li className='inline-block'>
-                  <Link target="_blank" href="https://github.com/Yooo31/"><BsGithub className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                  <Link target="_blank" href="https://github.com/Yooo31/"><BsGithub className=" transition-transform hover:scale-125" cursor="pointer" size={25} /></Link>
                 </li>
                 <li className='inline-block'>
-                  <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/"><BsLinkedin className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                  <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/"><BsLinkedin className=" transition-transform hover:scale-125" cursor="pointer" size={25} /></Link>
                 </li>
                 <li className='inline-block'>
-                  <Link target="_blank" href="mailto:mrts.yoan@gmail.com"><BsFillEnvelopeFill className=" transition-transform hover:scale-125" cursor="pointer" size={25}/></Link>
+                  <Link target="_blank" href="mailto:mrts.yoan@gmail.com"><BsFillEnvelopeFill className=" transition-transform hover:scale-125" cursor="pointer" size={25} /></Link>
+                </li>
+                <li className="inline-block">
+                  <ThemeMode />
                 </li>
               </ul>
             </div>

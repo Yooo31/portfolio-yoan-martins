@@ -19,8 +19,9 @@ const config: Config = {
           "success": "#1ab373",
           "warning": "#f98c1f",
           "error": "#e3524a",
-        },
+        }
       },
+      "valentine"
     ]
   }
 }
