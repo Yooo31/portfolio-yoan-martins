@@ -72,9 +72,10 @@
     "img":"todo.png",
     "technos": [
       "NextJS",
-      "Tailwind CSS"
+      "Tailwind CSS",
+      "Hors Ligne"
     ],
-    "url": "https://todo.yoanmartins.fr"
+    "url": null
   },
   {
     "name": "Los Bourriquots",
