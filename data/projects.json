@@ -1,7 +1,7 @@
 [
   {
     "name": "Kipsoft",
-    "description": "Le site statique de l&apos;entreprsie Kipsoft",
+    "description": "Le site vitrine de l'entreprsie Kipsoft.\nKipsoft est une société originaire du Lot spécialisée dans le développement de logiciel de gestion et d'application sur-mesure à destination des TPE et des PME.",
     "logo": "kipsoft-logo.png",
     "img":"kipsoft.png",
     "technos": [
@@ -12,7 +12,7 @@
   },
   {
     "name": "KPulse",
-    "description": "Le site statique d&apos;un logiciel de gestion",
+    "description": "Le site vitrine du logiciel de gestion KPulse. Un CRM multifonction pour les TPE et PME. Édité par Kipsoft.",
     "logo": "kpulse-logo.png",
     "img":"kpulse.png",
     "technos": [
@@ -23,7 +23,7 @@
   },
   {
     "name": "Klipp",
-    "description": "Le site statique de la partie espace client du logiciel KPulse",
+    "description": "Le site vitrine de la partie espace client du logiciel KPulse. Édité par Kipsoft.",
     "logo": "klipp-logo.png",
     "img":"klipp.png",
     "technos": [
@@ -34,7 +34,7 @@
   },
   {
     "name": "GeoSquare",
-    "description": "Le site statique du logiciel geotechnique GeoSquare",
+    "description": "Le site vitrine du logiciel geotechnique GeoSquare. Un logiciel de gestion de données géotechniques. Édité par Kipsoft.",
     "logo": "geosquare-logo.png",
     "img":"geosquare.png",
     "technos": [
@@ -45,17 +45,17 @@
   },
   {
     "name": "ipSYS",
-    "description": "Le site statique de l&apos;entreprsie ipSYS",
+    "description": "Le site vitrine de l'entreprsie ipSYS. ipSYS est une société spécialisée dans la sécurité informatique. Elle propose des solutions de sécurité informatique pour les entreprises. Édité par Kipsoft.",
     "logo": "ipsys-logo.png",
     "img":"ipsys.png",
     "technos": [
       "Wordpress"
     ],
-    "url": "https://ipsys.fr"
+    "url": "http://ipsys-v2.demokipsoft.fr"
   },
   {
     "name": "RCSP Results",
-    "description": "Un site qui affiche les résultats et match à venir de l&apos;équipe de rugby RCSP",
+    "description": "Un site qui affiche les résultats et match à venir de l'équipe de rugby RCSP",
     "logo": "rcsp-logo.png",
     "img":"rcsp.png",
     "technos": [
@@ -67,40 +67,42 @@
   },
   {
     "name": "ToDo Next",
-    "description": "Une todo list basique pour apprendre le NextJS",
+    "description": "Une todo list basique pour apprendre le NextJS. Me premier projet avec NextJS",
     "logo": "todo-logo.png",
     "img":"todo.png",
     "technos": [
       "NextJS",
       "Tailwind CSS"
     ],
-    "url": null
+    "url": "https://todo.yoanmartins.fr"
   },
   {
     "name": "Los Bourriquots",
-    "description": "Une boutique en ligne pour l&apos;amicale des joueurs du RCSP (site e-commerce)",
+    "description": "Une boutique en ligne pour l'amicale des joueurs du RCSP (site e-commerce)",
     "logo": "losbourriquots-logo.png",
     "img":"losbourriquots.png",
     "technos": [
       "Ruby on Rails",
       "Bootstrap",
-      "Docker"
+      "Docker",
+      "Hors Ligne"
     ],
     "url": null
   },
   {
     "name": "YourNews",
-    "description": "Une application en php pur réalisée lors du projet annuel de ma 2ème année de bachelor à l&apos;ESGI. C&apos;est un site de type blog ou l&apos;on peut se créer un compte, ajouter des posts...",
+    "description": "Cette application a été concue par ma personne durant ma fin de 2ème chez l'ESGI. En utilisant PHP, nous avions pour consigne de ne pas utiliser de framework, tout devait être \"fait main\". L'app est une sorte de blog, avec différentes contraintes, création d'utilisateur, de post. Gestion dees rôles et de la validité des articles...",
     "logo": "yournews-logo.png",
     "img":"yournews.png",
     "technos": [
-      "php"
+      "php",
+      "Hors Ligne"
     ],
     "url": "https://github.com/Yooo31/YourNews"
   },
   {
     "name": "Entraide46",
-    "description": "Le site d&apos;une association. On y trouve des ofres d&apos;emploies, des informations sur la société et des formulaires de contact",
+    "description": "Le site d'une association. On y trouve des ofres d'emploies, des informations sur la société et des formulaires de contact Édité par Kipsoft.",
     "logo": "entraide46-logo.jpg",
     "img":"entraide.png",
     "technos": [
@@ -110,7 +112,7 @@
   },
   {
     "name": "CESDDA",
-    "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C&apos;est un site explicatif, où l&apos;on peut y faire des réservations, et contact.",
+    "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C'est un site explicatif, où l'on peut y faire des réservations, et contact. Édité par Kipsoft.",
     "logo": "cesdda-logo.png",
     "img":"cesdda.png",
     "technos": [
@@ -119,8 +121,8 @@
     "url": "https://cesdda.fr/"
   },
   {
-    "name": "L&apos;armore de marie",
-    "description": "L&apos;armoire de marie est mon tout premier site réaliser, c&apos;est un site vitrine pour une boutique de vêtement.",
+    "name": "L'armore de marie",
+    "description": "L'armoire de marie est mon tout premier site réaliser, c'est un site vitrine pour une boutique de vêtement. Édité par Kipsoft.",
     "logo": "armoire-de-marie-logo.png",
     "img":"armoire-de-marie.png",
     "technos": [
