@@ -4,24 +4,27 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  line-height: 1.15
+  line-height: 1.15;
 }
 
 main {
-  display: block
+  display: block;
 }
 
 body {
-  font-family: IBM Plex Mono, monospace !important;
+  font-family:
+    IBM Plex Mono,
+    monospace !important;
   margin: 0;
 }
 
 .modal-box {
-  background: #1E1E1E;
+  background: #1e1e1e;
 }
 
-h1,h2 {
-  font-weight: 100
+h1,
+h2 {
+  font-weight: 100;
 }
 
 h2#typing {
@@ -42,7 +45,7 @@ h2#typing::after {
 
 #languages-list img {
   filter: grayscale(100%);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 #languages-list img:hover {
@@ -89,11 +92,11 @@ h2#typing::after {
 }
 
 .project-card {
-  transition: transform .1s;
+  transition: transform 0.1s;
   overflow: hidden;
 }
 
-.project-card:hover{
+.project-card:hover {
   -ms-transform: scale(1.5) !important;
   -webkit-transform: scale(1.5) !important;
   transform: scale(1.5) !important;
@@ -105,13 +108,13 @@ h2#typing::after {
 
 .btn-active {
   background-color: #e5e7eb !important;
-  color: #1E1E1E !important;
+  color: #1e1e1e !important;
   border: #e5e7eb !important;
 }
 
 .btn-active:hover {
   background-color: #e5e7eb !important;
-  color: #1E1E1E !important;
+  color: #1e1e1e !important;
   border: #e5e7eb !important;
 }
 

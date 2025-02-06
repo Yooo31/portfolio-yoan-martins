@@ -3,132 +3,96 @@
     "name": "Kipsoft",
     "description": "Le site vitrine de l'entreprsie Kipsoft.\nKipsoft est une société originaire du Lot spécialisée dans le développement de logiciel de gestion et d'application sur-mesure à destination des TPE et des PME.",
     "logo": "kipsoft-logo.png",
-    "img":"kipsoft.png",
-    "technos": [
-      "Jekyll",
-      "Bootstrap"
-    ],
+    "img": "kipsoft.png",
+    "technos": ["Jekyll", "Bootstrap"],
     "url": "https://kipsoft.fr"
   },
   {
     "name": "KPulse",
     "description": "Le site vitrine du logiciel de gestion KPulse. Un CRM multifonction pour les TPE et PME. Édité par Kipsoft.",
     "logo": "kpulse-logo.png",
-    "img":"kpulse.png",
-    "technos": [
-      "Jekyll",
-      "Bootstrap"
-    ],
+    "img": "kpulse.png",
+    "technos": ["Jekyll", "Bootstrap"],
     "url": "https://kpulse.fr"
   },
   {
     "name": "Klipp",
     "description": "Le site vitrine de la partie espace client du logiciel KPulse. Édité par Kipsoft.",
     "logo": "klipp-logo.png",
-    "img":"klipp.png",
-    "technos": [
-      "Jekyll",
-      "Bootstrap"
-    ],
+    "img": "klipp.png",
+    "technos": ["Jekyll", "Bootstrap"],
     "url": "https://klipp.space"
   },
   {
     "name": "GeoSquare",
     "description": "Le site vitrine du logiciel geotechnique GeoSquare. Un logiciel de gestion de données géotechniques. Édité par Kipsoft.",
     "logo": "geosquare-logo.png",
-    "img":"geosquare.png",
-    "technos": [
-      "Jekyll",
-      "Bootstrap"
-    ],
+    "img": "geosquare.png",
+    "technos": ["Jekyll", "Bootstrap"],
     "url": "https://geosquare.fr"
   },
   {
     "name": "ipSYS",
     "description": "Le site vitrine de l'entreprsie ipSYS. ipSYS est une société spécialisée dans la sécurité informatique. Elle propose des solutions de sécurité informatique pour les entreprises. Édité par Kipsoft.",
     "logo": "ipsys-logo.png",
-    "img":"ipsys.png",
-    "technos": [
-      "Wordpress"
-    ],
+    "img": "ipsys.png",
+    "technos": ["Wordpress"],
     "url": "http://ipsys-v2.demokipsoft.fr"
   },
   {
     "name": "RCSP Results",
     "description": "Un site qui affiche les résultats et match à venir de l'équipe de rugby RCSP",
     "logo": "rcsp-logo.png",
-    "img":"rcsp.png",
-    "technos": [
-      "ReactJS",
-      "Tailwind",
-      "FFR API"
-    ],
+    "img": "rcsp.png",
+    "technos": ["ReactJS", "Tailwind", "FFR API"],
     "url": "https://losbourriquots.fr"
   },
   {
     "name": "ToDo Next",
     "description": "Une todo list basique pour apprendre le NextJS. Me premier projet avec NextJS",
     "logo": "todo-logo.png",
-    "img":"todo.png",
-    "technos": [
-      "NextJS",
-      "Tailwind CSS",
-      "Hors Ligne"
-    ],
+    "img": "todo.png",
+    "technos": ["NextJS", "Tailwind CSS", "Hors Ligne"],
     "url": null
   },
   {
     "name": "Los Bourriquots",
     "description": "Une boutique en ligne pour l'amicale des joueurs du RCSP (site e-commerce)",
     "logo": "losbourriquots-logo.png",
-    "img":"losbourriquots.png",
-    "technos": [
-      "Ruby on Rails",
-      "Bootstrap",
-      "Docker",
-      "Hors Ligne"
-    ],
+    "img": "losbourriquots.png",
+    "technos": ["Ruby on Rails", "Bootstrap", "Docker", "Hors Ligne"],
     "url": null
   },
   {
     "name": "YourNews",
     "description": "Cette application a été concue par ma personne durant ma fin de 2ème chez l'ESGI. En utilisant PHP, nous avions pour consigne de ne pas utiliser de framework, tout devait être \"fait main\". L'app est une sorte de blog, avec différentes contraintes, création d'utilisateur, de post. Gestion dees rôles et de la validité des articles...",
     "logo": "yournews-logo.png",
-    "img":"yournews.png",
-    "technos": [
-      "php",
-      "Hors Ligne"
-    ],
+    "img": "yournews.png",
+    "technos": ["php", "Hors Ligne"],
     "url": "https://github.com/Yooo31/YourNews"
   },
   {
     "name": "Entraide46",
     "description": "Le site d'une association. On y trouve des ofres d'emploies, des informations sur la société et des formulaires de contact Édité par Kipsoft.",
     "logo": "entraide46-logo.jpg",
-    "img":"entraide.png",
-    "technos": [
-      "Wordpress"
-    ],
+    "img": "entraide.png",
+    "technos": ["Wordpress"],
     "url": "http://www.entraide46.fr/"
   },
   {
     "name": "CESDDA",
     "description": "Le CESDDA est un Centre d’Education Spécialisée pour Dysphasiques et Déficients Auditifs. C'est un site explicatif, où l'on peut y faire des réservations, et contact. Édité par Kipsoft.",
     "logo": "cesdda-logo.png",
-    "img":"cesdda.png",
-    "technos": [
-      "Wordpress"
-    ],
+    "img": "cesdda.png",
+    "technos": ["Wordpress"],
     "url": "https://cesdda.fr/"
   },
   {
     "name": "L'armore de marie",
     "description": "L'armoire de marie est mon tout premier site réaliser, c'est un site vitrine pour une boutique de vêtement. Édité par Kipsoft.",
     "logo": "armoire-de-marie-logo.png",
-    "img":"armoire-de-marie.png",
-    "technos": [
-      "Wordpress"
-    ],
+    "img": "armoire-de-marie.png",
+    "technos": ["Wordpress"],
     "url": "https://l-armoire-de-marie.fr/"
   }
 ]

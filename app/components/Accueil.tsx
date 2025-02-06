@@ -1,6 +1,7 @@
 import Image from "next/image";
-import yoan from "../images/yoan-martins.svg";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+
+const yoan = "/images/yoan-martins.svg";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
