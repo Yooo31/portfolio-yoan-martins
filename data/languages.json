@@ -1,72 +1,72 @@
 [
   {
     "name": "Ruby on Rails",
-    "img":"ror",
+    "img": "ror",
     "display": true
   },
   {
     "name": "Jekyll",
-    "img":"jekyll",
+    "img": "jekyll",
     "display": false
   },
   {
     "name": "Ruby",
-    "img":"ruby",
+    "img": "ruby",
     "display": true
   },
   {
     "name": "NodeJS",
-    "img":"node-js",
+    "img": "node-js",
     "display": true
   },
   {
     "name": "Python",
-    "img":"python",
+    "img": "python",
     "display": true
   },
   {
     "name": "ReactJS",
-    "img":"react",
+    "img": "react",
     "display": true
   },
   {
     "name": "NextJS",
-    "img":"next",
+    "img": "next",
     "display": true
   },
   {
     "name": "TypeScript",
-    "img":"typescript",
+    "img": "typescript",
     "display": true
   },
   {
     "name": "Symfony",
-    "img":"symfony",
+    "img": "symfony",
     "display": true
   },
   {
     "name": "php",
-    "img":"php",
+    "img": "php",
     "display": false
   },
   {
     "name": "Docker",
-    "img":"docker",
+    "img": "docker",
     "display": true
   },
   {
     "name": "Cypress",
-    "img":"cypress",
+    "img": "cypress",
     "display": true
   },
   {
     "name": "Bootstrap",
-    "img":"bootstrap",
+    "img": "bootstrap",
     "display": true
   },
   {
     "name": "Tailwind",
-    "img":"tailwind",
+    "img": "tailwind",
     "display": true
   }
 ]
