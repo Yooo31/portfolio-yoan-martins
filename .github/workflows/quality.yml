@@ -33,7 +33,7 @@ jobs:
         run: npx eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0
 
       - name: 🎨 Run Prettier
-        run: npx prettier --check .
+        run: npx prettier --write --check .
 
       - name: 🔥 Check TypeScript (si applicable)
         run: npx tsc --noEmit
