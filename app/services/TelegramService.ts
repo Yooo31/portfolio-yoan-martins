@@ -1,11 +1,12 @@
 export class TelegramService {
-  private static readonly apiUrl = 'https://ym-telegram.yoanmartins.fr/sendMessage';
+  private static readonly apiUrl =
+    "https://ym-telegram.yoanmartins.fr/sendMessage";
 
   static async sendMessage(message: string) {
     const requestBody = {
       bot: null,
       canal: null,
-      config: 'portfolio-yoan',
+      config: "portfolio-yoan",
       info: {
         name: "🚨 Nouvelle demande de contact ! 🚨",
         text: message,
@@ -13,15 +14,15 @@ export class TelegramService {
     };
 
     const res = await fetch(TelegramService.apiUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(requestBody),
     });
 
     const responseText = await res.text();
     console.log(responseText);
-    return {status: res.status};
+    return { status: res.status };
   }
 }
