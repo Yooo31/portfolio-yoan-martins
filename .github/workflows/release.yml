@@ -15,7 +15,7 @@ jobs:
   release:
     name: 🔥 Semantic Release
     runs-on: ubuntu-latest
-    needs: 🧼 Lint & Format Check
+    needs: lint
 
     steps:
       - name: 📥 Checkout repository
