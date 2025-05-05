@@ -23,3 +23,10 @@ jobs:
           npx lhci autorun \
             --collect.url=https://yoanmartins.fr \
             --upload.target=temporary-public-storage
+
+      - name: Notify Telegram if Failure
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="❌ Lighthouse : Mauvais score sur yoanmartins.fr"

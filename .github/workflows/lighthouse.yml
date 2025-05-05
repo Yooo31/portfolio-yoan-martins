@@ -3,7 +3,7 @@ name: 💡 Lighthouse Audit on develop
 on:
   push:
     branches:
-      - feat/*
+      - develop
 
 jobs:
   lighthouse:
