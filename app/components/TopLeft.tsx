@@ -1,7 +1,7 @@
 import Header from "@/app/components/Header";
 
 interface TopLeftProps {
-  setSelectedComponent: (component: string) => void; // Spécifiez le type ici
+  setSelectedComponent: (component: string) => void;
 }
 
 const TopLeft: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
