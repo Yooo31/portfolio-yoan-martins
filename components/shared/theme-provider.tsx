@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState, useCallback } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "light" | "dark"
 
@@ -11,52 +11,46 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
+function applyTheme(theme: Theme) {
+  const root = document.documentElement
+  if (theme === "dark") {
+    root.classList.add("dark")
+  } else {
+    root.classList.remove("dark")
+  }
+  localStorage.setItem("theme", theme)
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    // Lire l'état initial depuis le DOM (défini par le script anti-flash)
-    const isDarkFromDOM = document.documentElement.classList.contains("dark")
     const savedTheme = localStorage.getItem("theme") as Theme | null
+    const isDarkFromDOM = document.documentElement.classList.contains("dark")
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+
+    let initialTheme: Theme = "light"
 
     if (savedTheme) {
-      setTheme(savedTheme)
-      // S'assurer que le DOM est synchronisé
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark")
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
-    } else if (isDarkFromDOM) {
-      setTheme("dark")
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-      if (prefersDark) {
-        setTheme("dark")
-        document.documentElement.classList.add("dark")
-      }
+      initialTheme = savedTheme
+    } else if (isDarkFromDOM || prefersDark) {
+      initialTheme = "dark"
     }
+
+    setTheme(initialTheme)
+    applyTheme(initialTheme)
   }, [])
 
-  const updateTheme = useCallback((newTheme: Theme) => {
-    setTheme(newTheme)
-    const root = document.documentElement
-    if (newTheme === "dark") {
-      root.classList.add("dark")
-    } else {
-      root.classList.remove("dark")
-    }
-    localStorage.setItem("theme", newTheme)
-  }, [])
+  const toggleTheme = () => {
+    setTheme(prevTheme => {
+      const newTheme = prevTheme === "light" ? "dark" : "light"
+      applyTheme(newTheme)
+      return newTheme
+    })
+  }
 
-  const toggleTheme = useCallback(() => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    updateTheme(newTheme)
-  }, [theme, updateTheme])
-
-  // Éviter le flash en ne rendant pas avant le montage
   if (!mounted) {
     return <>{children}</>
   }

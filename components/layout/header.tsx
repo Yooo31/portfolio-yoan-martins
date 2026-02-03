@@ -27,12 +27,11 @@ export function Header() {
           <Image
             src="/icon.svg"
             alt="Logo Yoan Martins"
-            width={28}
-            height={28}
+            width={40}
+            height={40}
             className="rounded-full"
             priority
           />
-          <span className="hidden sm:inline-block text-zinc-900 dark:text-white">YOAN.DEV</span>
         </Link>
 
         <nav

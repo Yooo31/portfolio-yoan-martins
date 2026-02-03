@@ -12,9 +12,9 @@ export default function Home() {
       <Header />
       <main id="main-content" className="pt-32 pb-20">
         <HeroSection />
-        <AboutSection />
-        <StackSection />
         <ProjectsSection />
+        <StackSection />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />
