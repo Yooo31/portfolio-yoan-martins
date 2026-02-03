@@ -1,4 +1,4 @@
-import Footer from "@/app/components/Footer";
+import Footer from "@/app/components/Footer"
 
 const BottomRight = () => {
   return (
@@ -26,7 +26,7 @@ const BottomRight = () => {
         ></path>
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default BottomRight;
+export default BottomRight

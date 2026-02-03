@@ -1,9 +1,12 @@
-const dotenv = require("dotenv");
-dotenv.config();
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-};
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

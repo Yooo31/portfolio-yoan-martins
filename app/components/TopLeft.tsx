@@ -1,7 +1,7 @@
-import Header from "@/app/components/Header";
+import Header from "@/app/components/Header"
 
 interface TopLeftProps {
-  setSelectedComponent: (component: string) => void;
+  setSelectedComponent: (component: string) => void
 }
 
 const TopLeft: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
@@ -30,7 +30,7 @@ const TopLeft: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
 
       <Header setSelectedComponent={setSelectedComponent} />
     </div>
-  );
-};
+  )
+}
 
-export default TopLeft;
+export default TopLeft

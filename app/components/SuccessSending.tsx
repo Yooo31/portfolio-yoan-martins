@@ -16,5 +16,5 @@ export default function SuccessSending() {
       </svg>
       <span>Message envoyé avec succès !</span>
     </div>
-  );
+  )
 }
