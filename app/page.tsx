@@ -1,14 +1,14 @@
-"use client";
-import { useState } from "react";
-import Accueil from "@/app/components/Accueil";
-import Projets from "@/app/components/Projets";
-import TopLeft from "@/app/components/TopLeft";
-import BottomRight from "@/app/components/BottomRight";
-import Technos from "@/app/components/Technos";
-import Contact from "@/app/components/Contact";
+"use client"
+import { useState } from "react"
+import Accueil from "@/app/components/Accueil"
+import Projets from "@/app/components/Projets"
+import TopLeft from "@/app/components/TopLeft"
+import BottomRight from "@/app/components/BottomRight"
+import Technos from "@/app/components/Technos"
+import Contact from "@/app/components/Contact"
 
 export default function Home() {
-  const [selectedComponent, setSelectedComponent] = useState("Accueil");
+  const [selectedComponent, setSelectedComponent] = useState("Accueil")
 
   return (
     <div className="block box-border fixed top-0 bottom-0 left-0 right-0 overflow-y-auto">
@@ -20,7 +20,10 @@ export default function Home() {
             {selectedComponent}
           </h1>
 
-          <main className="w-full md:w-9/12 lg:w-9/12 m-auto flex justify-center items-center">
+          <main
+            id="main-content"
+            className="w-full md:w-9/12 lg:w-9/12 m-auto flex justify-center items-center"
+          >
             {selectedComponent === "Accueil" && <Accueil />}
             {selectedComponent === "Technos" && <Technos />}
             {selectedComponent === "Projets" && <Projets />}
@@ -31,5 +34,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }

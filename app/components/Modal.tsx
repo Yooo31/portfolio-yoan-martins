@@ -1,24 +1,25 @@
-import Image from "next/image";
-import Link from "next/link";
-import { BiLinkExternal } from "react-icons/bi";
+import Image from "next/image"
+import Link from "next/link"
+import { BiLinkExternal } from "react-icons/bi"
 
-interface ModalProps {
-  ModalOpen: boolean;
-  setModalOpen: (open: boolean) => void;
-  selectedProject: any;
+interface Project {
+  name: string
+  description: string
+  img: string
+  url: string | null
+  technos: string[]
 }
 
-const Modal: React.FC<ModalProps> = ({
-  ModalOpen,
-  setModalOpen,
-  selectedProject,
-}) => {
+interface ModalProps {
+  ModalOpen: boolean
+  setModalOpen: (open: boolean) => void
+  selectedProject: Project | null
+}
+
+const Modal: React.FC<ModalProps> = ({ ModalOpen, setModalOpen, selectedProject }) => {
   if (!selectedProject) {
     return (
-      <dialog
-        id="my_modal_3"
-        className={`modal ${ModalOpen ? "modal-open" : ""}`}
-      >
+      <dialog id="my_modal_3" className={`modal ${ModalOpen ? "modal-open" : ""}`}>
         <div className="modal-box">
           <button
             onClick={() => setModalOpen(false)}
@@ -29,14 +30,11 @@ const Modal: React.FC<ModalProps> = ({
           <p>Erreur de chargement lors de l&apos;ouverture du projet</p>
         </div>
       </dialog>
-    );
+    )
   }
 
   return (
-    <dialog
-      id="my_modal_3"
-      className={`text-white modal ${ModalOpen ? "modal-open" : ""}`}
-    >
+    <dialog id="my_modal_3" className={`text-white modal ${ModalOpen ? "modal-open" : ""}`}>
       <div className="modal-box max-w-full w-3/4 sm:w-1/2 lg:w-1/2 z-[60]">
         <button
           onClick={() => setModalOpen(false)}
@@ -81,7 +79,7 @@ const Modal: React.FC<ModalProps> = ({
         </div>
       </div>
     </dialog>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

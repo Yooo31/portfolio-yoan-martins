@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { BsGithub, BsLinkedin, BsFillEnvelopeFill } from "react-icons/bs";
-import ThemeMode from "@/app/components/ThemeMode";
+import Link from "next/link"
+import { BsGithub, BsLinkedin, BsFillEnvelopeFill } from "react-icons/bs"
+import ThemeMode from "@/app/components/ThemeMode"
 
 interface TopLeftProps {
-  setSelectedComponent: (component: string) => void; // Spécifiez le type ici
+  setSelectedComponent: (component: string) => void // Spécifiez le type ici
 }
 
 const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
@@ -59,10 +59,7 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
                   </Link>
                 </li>
                 <li className="inline-block">
-                  <Link
-                    target="_blank"
-                    href="https://www.linkedin.com/in/yoan-martins/"
-                  >
+                  <Link target="_blank" href="https://www.linkedin.com/in/yoan-martins/">
                     <BsLinkedin
                       className=" transition-transform hover:scale-125"
                       cursor="pointer"
@@ -124,7 +121,7 @@ const Header: React.FC<TopLeftProps> = ({ setSelectedComponent }) => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

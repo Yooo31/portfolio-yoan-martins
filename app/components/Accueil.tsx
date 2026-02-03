@@ -1,18 +1,18 @@
-import Image from "next/image";
-import { useEffect } from "react";
+import Image from "next/image"
+import { useEffect } from "react"
 
-const yoan = "/images/yoan-martins.svg";
+const yoan = "/images/yoan-martins.svg"
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 const Accueil = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
       offset: 10,
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <div className="min-h-full flex items-center mb-32">
@@ -45,14 +45,13 @@ const Accueil = () => {
             </div>
           </div>
           <p className="py-6 text-sm md:text-base mr-0 md:mr-20">
-            My name is Yoan Martins, I am 20 years old. I am studying to become
-            a full-stack developer. I am passionate about IT and rugby. See you
-            soon !
+            My name is Yoan Martins, I am 20 years old. I am studying to become a full-stack
+            developer. I am passionate about IT and rugby. See you soon !
           </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Accueil;
+export default Accueil

@@ -1,14 +1,14 @@
-import SuccessSending from "@/app/components/SuccessSending";
-import ErrorSending from "@/app/components/ErrorSending";
-import FormView from "@/app/components/FormView";
-import { useState } from "react";
+import SuccessSending from "@/app/components/SuccessSending"
+import ErrorSending from "@/app/components/ErrorSending"
+import FormView from "@/app/components/FormView"
+import { useState } from "react"
 
 const Contact = () => {
-  const [submissionResult, setSubmissionResult] = useState<string | null>(null);
+  const [submissionResult, setSubmissionResult] = useState<string | null>(null)
 
   const handleSubmissionResultChange = (newResult: string | null) => {
-    setSubmissionResult(newResult);
-  };
+    setSubmissionResult(newResult)
+  }
 
   return (
     <div className="flex justify-center my-5 w-full md:w-4/5 lg:w-4/5 flex-col">
@@ -18,7 +18,7 @@ const Contact = () => {
       )}
       {submissionResult === "error" && <ErrorSending />}
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -1,10 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #d1d1d1;
+  --color-secondary: #1e1e1e;
+  --color-base-100: #1e1e1e;
+  --color-accent: #ffffff;
+  --color-info: #1c67f2;
+  --color-success: #1ab373;
+  --color-warning: #f98c1f;
+  --color-error: #e3524a;
+}
 
 html {
   -webkit-text-size-adjust: 100%;
   line-height: 1.15;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -14,8 +24,10 @@ main {
 body {
   font-family:
     IBM Plex Mono,
-    monospace !important;
+    monospace;
   margin: 0;
+  background-color: var(--color-base-100);
+  color: var(--color-primary);
 }
 
 .modal-box {
@@ -81,11 +93,9 @@ h2#typing::after {
   0% {
     opacity: 1;
   }
-
   50% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -97,37 +107,70 @@ h2#typing::after {
 }
 
 .project-card:hover {
-  -ms-transform: scale(1.5) !important;
-  -webkit-transform: scale(1.5) !important;
-  transform: scale(1.5) !important;
+  transform: scale(1.5);
 }
 
 .card.image-full > figure img {
-  object-fit: none !important;
+  object-fit: none;
 }
 
 .btn-active {
-  background-color: #e5e7eb !important;
-  color: #1e1e1e !important;
-  border: #e5e7eb !important;
+  background-color: #e5e7eb;
+  color: #1e1e1e;
+  border-color: #e5e7eb;
 }
 
 .btn-active:hover {
-  background-color: #e5e7eb !important;
-  color: #1e1e1e !important;
-  border: #e5e7eb !important;
+  background-color: #e5e7eb;
+  color: #1e1e1e;
+  border-color: #e5e7eb;
 }
 
 .btn-outline:hover {
   background: none;
 }
 
-/* DaisyUI */
-
 .text-accent {
-  --tw-text-opacity: 0.25;
-  color: hsl(var(--a) / var(--tw-text-opacity));
+  color: rgba(255, 255, 255, 0.25);
 }
+
 .text-white {
   color: #d1d1d1;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-base-100 {
+  background-color: var(--color-base-100);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+/* Skip link pour accessibilité */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus,
+.sr-only.focus\:not-sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }

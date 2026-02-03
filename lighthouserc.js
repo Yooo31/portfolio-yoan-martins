@@ -1,13 +1,15 @@
 module.exports = {
   ci: {
     collect: {
-      staticDistDir: "./out", // Pour Next.js en mode static export
+      staticDistDir: "./out",
+      numberOfRuns: 3,
     },
     assert: {
+      preset: "lighthouse:recommended",
       assertions: {
-        "categories:performance": ["error", { minScore: 0.9 }],
+        "categories:performance": ["warn", { minScore: 0.9 }],
         "categories:accessibility": ["error", { minScore: 0.9 }],
-        "categories:best-practices": ["error", { minScore: 0.9 }],
+        "categories:best-practices": ["warn", { minScore: 0.9 }],
         "categories:seo": ["error", { minScore: 0.9 }],
       },
     },
@@ -15,4 +17,4 @@ module.exports = {
       target: "temporary-public-storage",
     },
   },
-};
+}

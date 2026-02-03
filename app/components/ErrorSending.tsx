@@ -16,5 +16,5 @@ export default function ErrorSending() {
       </svg>
       <span>Erreur lors de l&apos;envoie du message...</span>
     </div>
-  );
+  )
 }

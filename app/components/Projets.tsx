@@ -1,69 +1,59 @@
-import { useEffect, useState } from "react";
-import LanguagesData from "@/data/projects.json";
-import Modal from "@/app/components/Modal";
+import { useEffect, useState } from "react"
+import LanguagesData from "@/data/projects.json"
+import Modal from "@/app/components/Modal"
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Image from "next/image";
+import AOS from "aos"
+import "aos/dist/aos.css"
+import Image from "next/image"
 
 interface Project {
-  name: string;
-  description: string;
-  logo: string;
-  img: string;
-  technos: string[];
-  url: string | null;
+  name: string
+  description: string
+  logo: string
+  img: string
+  technos: string[]
+  url: string | null
 }
 
 const Projets = () => {
-  const data = LanguagesData;
+  const data = LanguagesData
 
-  const [ModalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>();
+  const [ModalOpen, setModalOpen] = useState<boolean>(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(1)
+  const projectsPerPage = 6
 
   const openModal = (project: Project) => {
-    setSelectedProject(project);
-    setModalOpen(true);
-  };
+    setSelectedProject(project)
+    setModalOpen(true)
+  }
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       offset: 10,
-    });
-  }, []);
+    })
+  }, [])
 
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = data.slice(indexOfFirstProject, indexOfLastProject);
+  const indexOfLastProject = currentPage * projectsPerPage
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage
+  const currentProjects = data.slice(indexOfFirstProject, indexOfLastProject)
 
-  const totalPages = Math.ceil(data.length / projectsPerPage);
+  const totalPages = Math.ceil(data.length / projectsPerPage)
 
   return (
     <>
-      <Modal
-        ModalOpen={ModalOpen}
-        setModalOpen={setModalOpen}
-        selectedProject={selectedProject}
-      />
+      <Modal ModalOpen={ModalOpen} setModalOpen={setModalOpen} selectedProject={selectedProject} />
 
       <div className="z-40 flex flex-col">
-        <div
-          data-aos="zoom-in-up"
-          className="min-h-full flex flex-wrap place-content-around"
-        >
+        <div data-aos="zoom-in-up" className="min-h-full flex flex-wrap place-content-around">
           {currentProjects.map((element, index) => (
             <div
               key={index}
               className="rounded-xl h-[200px] w-[300px] md:w-[220px] lg:w-[300px] my-6 flex flex-col-reverse group"
             >
-              <button
-                className="h-full w-full"
-                onClick={() => openModal(element)}
-              >
+              <button className="h-full w-full" onClick={() => openModal(element)}>
                 <div className="card w-full h-full bg-base-100 shadow-xl image-full">
                   <figure>
                     <Image
@@ -98,7 +88,7 @@ const Projets = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Projets;
+export default Projets

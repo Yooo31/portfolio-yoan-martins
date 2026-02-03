@@ -1,32 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 export default function ThemeMode() {
-  const isLocalStorageAvailable = typeof localStorage !== "undefined";
+  const isLocalStorageAvailable = typeof localStorage !== "undefined"
 
-  const storedTheme = isLocalStorageAvailable
-    ? (localStorage.getItem("theme") ?? "dark")
-    : "dark";
+  const storedTheme = isLocalStorageAvailable ? (localStorage.getItem("theme") ?? "dark") : "dark"
 
-  const [theme, setTheme] = useState(storedTheme);
+  const [theme, setTheme] = useState(storedTheme)
 
   const handleToggle = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+    setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"))
+  }
 
   useEffect(() => {
     if (isLocalStorageAvailable) {
-      localStorage.setItem("theme", theme);
-      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme)
+      document.documentElement.setAttribute("data-theme", theme)
     }
-  }, [theme, isLocalStorageAvailable]);
+  }, [theme, isLocalStorageAvailable])
 
   return (
     <label className="swap swap-rotate">
-      <input
-        type="checkbox"
-        onChange={handleToggle}
-        checked={theme === "dark"}
-      />
+      <input type="checkbox" onChange={handleToggle} checked={theme === "dark"} />
       {theme === "dark" ? (
         <svg
           className="swap-on fill-current"
@@ -53,5 +47,5 @@ export default function ThemeMode() {
         </svg>
       )}
     </label>
-  );
+  )
 }
