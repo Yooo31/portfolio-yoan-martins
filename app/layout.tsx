@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: "%s | Yoan Martins",
   },
   description:
-    "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées. React, Next.js, TypeScript, Node.js.",
+    "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées. React, NextJS, TypeScript, Node.js.",
   keywords: [
     "Développeur Full Stack",
     "React",
-    "Next.js",
+    "NextJS",
     "TypeScript",
     "Node.js",
     "Tailwind CSS",

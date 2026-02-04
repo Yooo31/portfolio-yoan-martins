@@ -14,7 +14,7 @@ export const techStack: TechStack[] = [
     category: "Frontend",
     icon: "monitor",
     technologies: [
-      { name: "Next.js", icon: "logos:nextjs-icon" },
+      { name: "NextJS", icon: "logos:nextjs-icon" },
       { name: "Astro.js", icon: "logos:astro-icon" },
       { name: "TypeScript", icon: "logos:typescript-icon" },
       { name: "Tailwind", icon: "logos:tailwindcss-icon" },
