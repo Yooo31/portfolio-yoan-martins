@@ -19,6 +19,7 @@
     "release:dry": "semantic-release --dry-run"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-navigation-menu": "^1.2.14",
