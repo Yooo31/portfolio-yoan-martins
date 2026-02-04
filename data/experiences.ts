@@ -17,6 +17,7 @@ export const experiences: Experience[] = [
     description:
       "Optimisation des outils internes et refonte de l'architecture frontend. Travail sur la performance et la scalabilité des applications métiers.",
     startDate: "2023",
+    endDate: "2026",
     isCurrent: true,
     type: "work",
   },
@@ -25,8 +26,8 @@ export const experiences: Experience[] = [
     company: "Ynov Campus",
     role: "Master 2 Expert Informatique",
     startDate: "2023",
-    endDate: "2025",
-    isCurrent: false,
+    endDate: "2026",
+    isCurrent: true,
     type: "education",
   },
   {
@@ -35,7 +36,7 @@ export const experiences: Experience[] = [
     role: "Alternant Développeur Web",
     description:
       "Développement de modules spécifiques et maintenance corrective sur des solutions logicielles existantes.",
-    startDate: "2022",
+    startDate: "2021",
     endDate: "2023",
     isCurrent: false,
     type: "work",
@@ -44,7 +45,7 @@ export const experiences: Experience[] = [
     id: "esgi",
     company: "ESGI",
     role: "Bachelor Ingénierie du Web",
-    startDate: "2020",
+    startDate: "2021",
     endDate: "2023",
     isCurrent: false,
     type: "education",

@@ -8,16 +8,16 @@ export const techStack: TechStack[] = [
   {
     category: "Frontend",
     icon: "monitor",
-    technologies: ["React", "Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    technologies: ["Next.js / React", "Astro.js", "TypeScript", "Tailwind CSS", "ShadCn"],
   },
   {
     category: "Backend & Data",
     icon: "server",
-    technologies: ["Node.js", "NestJS", "PostgreSQL", "Prisma", "Redis"],
+    technologies: ["Node.js", "Ruby", "PHP", "PostgreSQL", "Prisma"],
   },
   {
     category: "Outils",
     icon: "settings",
-    technologies: ["Docker", "Git/GitHub", "Figma", "Vercel"],
+    technologies: ["Docker", "Git/GitHub", "Figma", "Vercel", "Supabase"],
   },
 ]
