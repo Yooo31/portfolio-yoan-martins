@@ -79,14 +79,13 @@ function ProjectLinks({ project, className }: { project: Project; className?: st
 }
 
 // --- Cartes Bento ---
-// --- Cartes Bento ---
 
 // Helper pour l'image de fond (DRY - Don't Repeat Yourself)
 const BackgroundImage = ({ image }: { image?: string }) => {
   if (!image) return null
   return (
     <div
-      className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 scale-100 group-hover:scale-110 transition-all duration-700 bg-cover bg-center bg-no-repeat grayscale-[20%] group-hover:grayscale-0"
+      className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 scale-100 group-hover:scale-110 transition-all duration-700 bg-cover bg-center bg-no-repeat grayscale-[20%] group-hover:grayscale-0"
       style={{ backgroundImage: `url(${image})` }}
     />
   )
@@ -98,11 +97,10 @@ function ProjectCardLarge({ project }: { project: Project }) {
       {/* Background Gradient Base */}
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 z-0" />
 
-      {/* Image Background */}
       <BackgroundImage image={project.image} />
 
-      {/* Overlay pour lisibilité */}
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-100/90 via-zinc-100/40 to-transparent dark:from-zinc-900/90 dark:via-zinc-900/40 dark:to-transparent z-10" />
+      {/* Overlay pour lisibilité - visible uniquement au survol */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-100/95 via-zinc-100/80 to-zinc-100/60 dark:from-zinc-900/95 dark:via-zinc-900/80 dark:to-zinc-900/60 opacity-100 group-hover:opacity-90 transition-opacity duration-300 z-10" />
 
       <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
         <div className="flex justify-between items-start">
@@ -150,35 +148,19 @@ function ProjectCardLarge({ project }: { project: Project }) {
 }
 
 function ProjectCardSmall({ project }: { project: Project }) {
-  const isDark = project.icon === "calendar" || project.icon === "gamepad"
-
   return (
-    <article
-      className={cn(
-        "bento-card relative group col-span-1 overflow-hidden rounded-3xl border",
-        isDark
-          ? "bg-zinc-900 dark:bg-black border-zinc-800 dark:border-zinc-800"
-          : "bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
-      )}
-    >
+    <article className="bento-card relative group col-span-1 overflow-hidden rounded-3xl border bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800">
       {/* Image Background */}
       <BackgroundImage image={project.image} />
 
-      {/* Overlay spécifique pour Small Cards */}
-      <div
-        className={cn(
-          "absolute inset-0 z-10 transition-colors duration-300",
-          isDark
-            ? "bg-black/60 group-hover:bg-black/70"
-            : "bg-white/60 dark:bg-black/60 group-hover:bg-white/40 dark:group-hover:bg-black/50"
-        )}
-      />
+      {/* Overlay uniforme pour toutes les Small Cards - plus visible au survol */}
+      <div className="absolute inset-0 z-10 transition-all duration-300 bg-zinc-50/80 dark:bg-zinc-900/80 group-hover:bg-zinc-50/60 dark:group-hover:bg-zinc-900/60" />
 
       <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
         <ProjectLinks project={project} />
       </div>
 
-      {project.icon && !isDark && (
+      {project.icon && (
         <div
           className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-10 dark:opacity-20 transition-opacity duration-500 z-10 pointer-events-none"
           aria-hidden="true"
@@ -187,42 +169,18 @@ function ProjectCardSmall({ project }: { project: Project }) {
         </div>
       )}
 
-      {isDark && project.icon && (
-        <div
-          className="absolute top-0 right-0 p-6 text-zinc-700 dark:text-zinc-800 z-20"
-          aria-hidden="true"
-        >
-          {iconMap[project.icon]}
-        </div>
-      )}
-
       <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
-        <h3
-          className={cn(
-            "font-medium mb-1 truncate pr-8 drop-shadow-sm",
-            isDark ? "text-white" : "text-zinc-900 dark:text-white"
-          )}
-        >
+        <h3 className="font-medium mb-1 truncate pr-8 drop-shadow-sm text-zinc-900 dark:text-white">
           {project.name}
         </h3>
-        <p
-          className={cn(
-            "text-xs mb-3 line-clamp-2",
-            isDark ? "text-zinc-400" : "text-zinc-600 dark:text-zinc-300" // Un peu plus foncé pour contraste sur image
-          )}
-        >
+        <p className="text-xs mb-3 line-clamp-2 text-zinc-600 dark:text-zinc-300">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-1.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
           {project.technologies.slice(0, 2).map(tech => (
             <span
               key={tech}
-              className={cn(
-                "px-2 py-0.5 text-[10px] rounded border backdrop-blur-md shadow-sm",
-                isDark
-                  ? "bg-zinc-800/80 text-zinc-300 border-zinc-700"
-                  : "bg-white/80 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700"
-              )}
+              className="px-2 py-0.5 text-[10px] rounded border backdrop-blur-md shadow-sm bg-white/80 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700"
             >
               {tech}
             </span>
@@ -348,10 +306,11 @@ export function ProjectsSection() {
     if (project.size === "large") {
       return <ProjectCardLarge key={project.id} project={project} />
     }
+
     if (project.size === "medium") {
       return <ProjectCardMedium key={project.id} project={project} />
     }
-    // Condition spéciale pour utiliser le style minimaliste "Icon" pour certains petits projets
+
     if (project.icon === "utensils" || project.icon === "user") {
       return <ProjectCardWithIcon key={project.id} project={project} />
     }
