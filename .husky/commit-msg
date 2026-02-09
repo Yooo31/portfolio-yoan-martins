@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Couleurs pour les messages
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Récupérer le message de commit
+commit_msg=$(cat "$1")
+
+# Regex pour valider le format Conventional Commits
+# Format: type(scope)?: description
+# Types autorisés: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+conventional_regex="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?(!)?: .{1,100}$"
+
+# Permettre les commits de merge
+merge_regex="^Merge "
+
+# Permettre les commits de revert automatiques
+revert_regex="^Revert "
+
+if echo "$commit_msg" | grep -qE "$merge_regex"; then
+  exit 0
+fi
+
+if echo "$commit_msg" | grep -qE "$revert_regex"; then
+  exit 0
+fi
+
+if ! echo "$commit_msg" | grep -qE "$conventional_regex"; then
+  echo ""
+  echo -e "${RED}❌ Message de commit invalide !${NC}"
+  echo ""
+  echo -e "${YELLOW}Format attendu:${NC} <type>(<scope>): <description>"
+  echo ""
+  echo -e "${YELLOW}Types autorisés:${NC}"
+  echo "  feat     - Nouvelle fonctionnalité"
+  echo "  fix      - Correction de bug"
+  echo "  docs     - Documentation uniquement"
+  echo "  style    - Formatage, point-virgules manquants, etc."
+  echo "  refactor - Refactoring du code"
+  echo "  perf     - Amélioration des performances"
+  echo "  test     - Ajout ou correction de tests"
+  echo "  build    - Modifications du système de build"
+  echo "  ci       - Modifications de la CI/CD"
+  echo "  chore    - Autres modifications"
+  echo "  revert   - Revert d'un commit précédent"
+  echo ""
+  echo -e "${YELLOW}Exemples:${NC}"
+  echo "  feat(auth): add login with Google"
+  echo "  fix(api): resolve timeout issue"
+  echo "  docs: update README with new setup instructions"
+  echo ""
+  echo -e "${YELLOW}Breaking changes:${NC}"
+  echo "  feat!: remove support for Node 14"
+  echo "  feat(api)!: change response format"
+  echo ""
+  exit 1
+fi

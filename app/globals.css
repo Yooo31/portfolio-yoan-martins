@@ -1,133 +1,94 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.15;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Font - Inter */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Couleurs custom étendues */
+  --color-zinc-850: #1f1f22;
+  --color-zinc-950: #09090b;
 }
 
-main {
-  display: block;
+/* Base styles */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family:
-    IBM Plex Mono,
-    monospace !important;
-  margin: 0;
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
 
-.modal-box {
-  background: #1e1e1e;
+/* Glass effect - Header */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-h1,
-h2 {
-  font-weight: 100;
+.dark .glass {
+  background: rgba(9, 9, 11, 0.8);
 }
 
-h2#typing {
-  animation: typing 8s infinite steps(15);
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-h2#typing::after {
-  content: "";
-  position: absolute;
-  display: block;
-  height: 100%;
-  width: 1px;
-  background: #dadada;
-  right: 0;
-  top: 0;
-  animation: cursor 1.5s infinite;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-#languages-list img {
-  filter: grayscale(100%);
-  transition: 0.5s;
+::-webkit-scrollbar-thumb {
+  background-color: #e4e4e7;
+  border-radius: 20px;
 }
 
-#languages-list img:hover {
-  filter: grayscale(0%);
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #27272a;
 }
 
-#project-list:hover h2 {
-  transition: 1s;
-  display: block;
+/* Bento card hover effect */
+.bento-card {
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes typing {
+.bento-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .bento-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
   0% {
-    width: 0;
-  }
-  50% {
-    width: 100%;
-  }
-  70% {
-    width: 100%;
-  }
-  90% {
-    width: 0;
-  }
-  100% {
-    width: 0;
-    animation-timing-function: steps(1);
-    animation-iteration-count: 1;
-  }
-}
-
-@keyframes cursor {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
     opacity: 0;
+    transform: translateY(10px);
   }
-
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.project-card {
-  transition: transform 0.1s;
-  overflow: hidden;
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-.project-card:hover {
-  -ms-transform: scale(1.5) !important;
-  -webkit-transform: scale(1.5) !important;
-  transform: scale(1.5) !important;
+/* Selection colors */
+::selection {
+  background-color: #e4e4e7;
+  color: #18181b;
 }
 
-.card.image-full > figure img {
-  object-fit: none !important;
-}
-
-.btn-active {
-  background-color: #e5e7eb !important;
-  color: #1e1e1e !important;
-  border: #e5e7eb !important;
-}
-
-.btn-active:hover {
-  background-color: #e5e7eb !important;
-  color: #1e1e1e !important;
-  border: #e5e7eb !important;
-}
-
-.btn-outline:hover {
-  background: none;
-}
-
-/* DaisyUI */
-
-.text-accent {
-  --tw-text-opacity: 0.25;
-  color: hsl(var(--a) / var(--tw-text-opacity));
-}
-.text-white {
-  color: #d1d1d1;
+.dark ::selection {
+  background-color: #27272a;
+  color: #ffffff;
 }
