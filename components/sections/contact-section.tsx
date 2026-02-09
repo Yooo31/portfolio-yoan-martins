@@ -37,7 +37,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="max-w-2xl mx-auto px-6 mb-20">
+    <section id="contact" className="hidden max-w-2xl mx-auto px-6 mb-20">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-4">
           Parlons projet
