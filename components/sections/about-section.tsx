@@ -9,7 +9,6 @@ export function AboutSection() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* Description */}
         <div className="space-y-6">
           <h3 className="text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Construire avec rigueur.
@@ -31,7 +30,6 @@ export function AboutSection() {
           </p>
         </div>
 
-        {/* Timeline */}
         <div
           className="relative border-l border-zinc-200 dark:border-zinc-800 pl-8 space-y-10"
           role="list"

@@ -21,7 +21,6 @@ export function ContactSection() {
     setStatus("loading")
 
     try {
-      // Ici tu peux ajouter ton service d'envoi (ex: Telegram, email, etc.)
       await new Promise(resolve => setTimeout(resolve, 1000))
       setStatus("success")
       setFormData({ name: "", email: "", message: "" })

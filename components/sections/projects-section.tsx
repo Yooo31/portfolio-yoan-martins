@@ -20,8 +20,6 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-// --- Configuration des icônes et couleurs ---
-
 const iconMap: Record<string, React.ReactNode> = {
   home: <Home className="w-6 h-6" />,
   building: <Building2 className="w-6 h-6" />,
@@ -44,8 +42,6 @@ const colorMap: Record<string, string> = {
   emerald: "text-emerald-600 dark:text-emerald-400",
   blue: "text-blue-600 dark:text-blue-400",
 }
-
-// --- Composant utilitaire pour les liens (Github / Live) ---
 
 function ProjectLinks({ project, className }: { project: Project; className?: string }) {
   if (!project.github && !project.url) return null
@@ -77,9 +73,6 @@ function ProjectLinks({ project, className }: { project: Project; className?: st
   )
 }
 
-// --- Cartes Bento ---
-
-// Helper pour l'image de fond (DRY - Don't Repeat Yourself)
 const BackgroundImage = ({ image }: { image?: string }) => {
   if (!image) return null
   return (
@@ -105,8 +98,7 @@ function ProjectCardLarge({ project, className }: { project: Project; className?
     >
       <BackgroundImage image={project.image} />
 
-      {/* Overlay visible uniquement au survol */}
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-100/95 via-zinc-100/80 to-zinc-100/60 dark:from-zinc-900/95 dark:via-zinc-900/80 dark:to-zinc-900/60 opacity-0 group-hover:opacity-100 z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-zinc-100/95 via-zinc-100/80 to-zinc-100/60 dark:from-zinc-900/95 dark:via-zinc-900/80 dark:to-zinc-900/60 opacity-0 group-hover:opacity-100 z-10" />
 
       <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
         <div className="flex justify-between items-start">
@@ -176,10 +168,8 @@ function ProjectCardSmall({ project, className }: { project: Project; className?
         className
       )}
     >
-      {/* Image Background */}
       <BackgroundImage image={project.image} />
 
-      {/* Overlay visible uniquement au survol */}
       <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 bg-zinc-50/80 dark:bg-zinc-900/80" />
 
       <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -223,11 +213,9 @@ function ProjectCardMedium({ project, className }: { project: Project; className
         className
       )}
     >
-      {/* Image Background */}
       <BackgroundImage image={project.image} />
 
-      {/* Overlay visible uniquement au survol */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/20 dark:from-zinc-900/90 dark:via-zinc-900/50 dark:to-zinc-900/20 z-10 opacity-0 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/50 to-white/20 dark:from-zinc-900/90 dark:via-zinc-900/50 dark:to-zinc-900/20 z-10 opacity-0 group-hover:opacity-100" />
 
       <div className="absolute inset-0 p-6 flex flex-col justify-between z-20">
         <div className="flex justify-between items-start">
@@ -295,10 +283,8 @@ function ProjectCardWithIcon({ project, className }: { project: Project; classNa
         className
       )}
     >
-      {/* Image Background */}
       <BackgroundImage image={project.image} />
 
-      {/* Overlay visible uniquement au survol */}
       <div className="absolute inset-0 bg-white/80 dark:bg-zinc-900/80 z-10 opacity-0 group-hover:opacity-100" />
 
       <div className="absolute top-3 right-3 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
