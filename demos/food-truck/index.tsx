@@ -122,7 +122,7 @@ export function FoodTruckSite() {
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         <Hero business={business} />
 
         <Marquee
