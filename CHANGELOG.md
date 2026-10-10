@@ -1,3 +1,5 @@
+> Historique jusqu'à la 1.0.1. Les versions suivantes sont décrites dans les [releases GitHub](https://github.com/Yooo31/portfolio-yoan-martins/releases).
+
 ## [1.0.1](https://github.com/Yooo31/portfolio-yoan-martins/compare/v1.0.0...v1.0.1) (2025-02-05)
 
 ### Bug Fixes

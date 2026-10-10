@@ -5,6 +5,8 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  # Réutilisé par weekly-release.yml avant chaque promotion develop → main
+  workflow_call:
 
 permissions:
   contents: read
