@@ -82,7 +82,7 @@ export function TapissierSite() {
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         <Hero business={business} />
 
         <Marquee
