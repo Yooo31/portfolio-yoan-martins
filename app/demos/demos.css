@@ -1,0 +1,37 @@
+/* Socle commun aux démos de sites vitrines (app/demos/*). Chaque démo est scopée sous .demo-site. */
+@layer base {
+  /* Couleur de bordure par défaut = variable --border du thème de la démo */
+  .demo-site,
+  .demo-site *,
+  .demo-site ::before,
+  .demo-site ::after {
+    border-color: var(--border, currentColor);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .demo-site *,
+  .demo-site *::before,
+  .demo-site *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

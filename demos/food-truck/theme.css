@@ -1,0 +1,61 @@
+/* Thème food truck & traiteur : crème, tomate, tournesol, menthe et aubergine. Tout est scopé sous .ft-site. */
+.ft-site {
+  --ft-cream: #fff6e8;
+  --ft-paper: #fffbf4;
+  --ft-plum: #2b1838;
+  --ft-tomato: #ff5a36;
+  --ft-sun: #ffc23d;
+  --ft-mint: #17a589;
+  --ft-berry: #e8457f;
+  --ft-sky: #7cc6f2;
+
+  --background: var(--ft-cream);
+  --foreground: var(--ft-plum);
+  --card: var(--ft-paper);
+  --card-foreground: var(--ft-plum);
+  --primary: var(--ft-tomato);
+  --primary-foreground: #ffffff;
+  --popover: var(--ft-paper);
+  --popover-foreground: var(--ft-plum);
+  --border: rgb(43 24 56 / 0.14);
+  --input: rgb(43 24 56 / 0.22);
+  --ring: var(--ft-tomato);
+  --muted-foreground: rgb(43 24 56 / 0.62);
+  --accent: rgb(255 194 61 / 0.35);
+  --accent-foreground: var(--ft-plum);
+  --radius: 1.1rem;
+
+  background: var(--ft-cream);
+  color: var(--ft-plum);
+  font-family: var(--ft-body), system-ui, sans-serif;
+}
+
+.ft-site .font-ft-display {
+  font-family: var(--ft-display), system-ui, sans-serif;
+  font-variation-settings: "wdth" 85;
+  letter-spacing: -0.03em;
+}
+
+.ft-site .ft-dots {
+  background-image: radial-gradient(rgb(43 24 56 / 0.12) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.ft-site .ft-wave {
+  -webkit-mask: radial-gradient(18px at 50% 0, transparent 97%, #000) 50% 18px / 36px 100% repeat-x;
+  mask: radial-gradient(18px at 50% 0, transparent 97%, #000) 50% 18px / 36px 100% repeat-x;
+}
+
+.ft-site .ft-flip {
+  perspective: 1400px;
+}
+
+.ft-site .ft-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ft-site ::selection {
+  background: var(--ft-sun);
+  color: var(--ft-plum);
+}

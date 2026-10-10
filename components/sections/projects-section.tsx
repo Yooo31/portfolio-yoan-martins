@@ -9,7 +9,6 @@ import {
   TrendingUp,
   Laptop,
   ListTodo,
-  Github,
   Globe,
   Gamepad2,
   Utensils,
@@ -19,6 +18,7 @@ import {
   User,
 } from "lucide-react"
 import Link from "next/link"
+import { Github } from "@/components/ui/brand-icons"
 
 const iconMap: Record<string, React.ReactNode> = {
   home: <Home className="w-6 h-6" />,
