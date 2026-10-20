@@ -41,8 +41,15 @@ test.describe("SEO", () => {
     const config = JSON.parse(readFileSync("vercel.json", "utf8")) as {
       headers: { source: string; headers: { key: string; value: string }[] }[]
     }
-    const rule = config.headers.find(rule => rule.source === "/opengraph-image")
-    expect(rule?.headers).toContainEqual({ key: "Content-Type", value: "image/png" })
+    // Avec trailingSlash, l'URL servie est /opengraph-image/ : la règle doit couvrir les deux formes.
+    const covers = (source: string, path: string) =>
+      new RegExp(`^${source.replace("(.*)", ".*")}$`).test(path)
+    for (const path of ["/opengraph-image", "/opengraph-image/"]) {
+      const headers = config.headers
+        .filter(rule => covers(rule.source, path))
+        .flatMap(rule => rule.headers)
+      expect(headers, path).toContainEqual({ key: "Content-Type", value: "image/png" })
+    }
   })
 
   test("données structurées Person et WebSite valides", async ({ page }) => {
