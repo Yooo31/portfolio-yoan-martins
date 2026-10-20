@@ -4,18 +4,19 @@ export interface Project {
   description: string
   longDescription?: string
   image: string
-  logo?: string
   url?: string
   github?: string
   technologies: string[]
   category: "professional" | "school" | "side-project" | "open-source"
   featured: boolean
+  /** "large" : carte sur deux colonnes ; "small" et "medium" : une colonne */
   size: "small" | "medium" | "large"
-  color?: string
-  icon?: string
   year: string
   status?: "completed" | "in-progress" | "archived"
-  fontColor?: "dark" | "light"
+  /** "contain" pour un logo à afficher en entier (par défaut : l'image remplit le cadre) */
+  imageFit?: "cover" | "contain"
+  /** Couleur de fond derrière une image en "contain" */
+  imageBg?: string
 }
 
 export const projects: Project[] = [
@@ -26,18 +27,16 @@ export const projects: Project[] = [
     longDescription:
       "Site web moderne et responsive pour promouvoir les services de la société Entreprise PNG. Optimisé SEO et performances.",
     image: "/images/projects/logo-entreprise-png.webp",
-    logo: "/images/projects/logo-entreprise-png.webp",
     url: "https://entreprise-png.fr",
     github: "https://github.com/Yooo31/entreprise-png",
     technologies: ["Astro.js", "Tailwind", "ShadCn"],
     category: "professional",
     featured: true,
     size: "large",
-    icon: "building",
-    color: "blue",
     year: "2026",
     status: "completed",
-    fontColor: "dark",
+    imageFit: "contain",
+    imageBg: "#ffffff",
   },
   {
     id: "puissance-4",
@@ -45,17 +44,13 @@ export const projects: Project[] = [
     description: "Jeu de société multijoueur en temps réel.",
     longDescription: "Jeu de Puissance 4 avec architecture client-serveur et peer to peer.",
     image: "/images/projects/puissance-4.webp",
-    logo: "/images/projects/puissance-4.webp",
     technologies: ["NextJS", "NodeJS", "Socket.io"],
     category: "side-project",
     github: "https://github.com/Yooo31/four-connection-p2p",
     featured: true,
     size: "small",
-    icon: "gamepad",
-    color: "indigo",
     year: "2025",
     status: "completed",
-    fontColor: "light",
   },
   {
     id: "keep-your-room",
@@ -64,16 +59,12 @@ export const projects: Project[] = [
     longDescription:
       "Application complète permettant aux utilisateurs de réserver des salles, gérer les disponibilités et administrer les plannings.",
     image: "/images/projects/keep-your-room.webp",
-    logo: "/images/projects/keep-your-room.webp",
     technologies: ["NextJS", "Docker", "PostgreSQL"],
     category: "school",
     featured: true,
     size: "small",
-    icon: "calendar",
-    color: "blue",
     year: "2026",
     status: "in-progress",
-    fontColor: "dark",
   },
   {
     id: "vitrine-yoan-martins",
@@ -82,18 +73,14 @@ export const projects: Project[] = [
     longDescription:
       "Site vitrine personnel présentant mes compétences, projets et services de développeur.",
     image: "/og-image.webp",
-    logo: "/og-image.webp",
     technologies: ["NextJS", "TypeScript", "Tailwind"],
     category: "professional",
     featured: true,
     size: "medium",
     github: "https://github.com/Yooo31/vitrine-yoan-martins",
     url: "https://yoanmartins.fr",
-    icon: "briefcase",
-    color: "indigo",
     year: "2026",
     status: "completed",
-    fontColor: "light",
   },
   {
     id: "demo-tapissier",
@@ -102,17 +89,13 @@ export const projects: Project[] = [
     longDescription:
       "Concept de site vitrine pour une entreprise fictive : nuancier interactif, galerie avant/après et demande de devis avec photo.",
     image: "/images/projects/demo-tapissier.webp",
-    logo: "/images/projects/demo-tapissier.webp",
     url: "/demos/tapissier/",
     technologies: ["NextJS", "Tailwind", "Motion"],
     category: "side-project",
     featured: true,
-    size: "medium",
-    icon: "palette",
-    color: "emerald",
+    size: "large",
     year: "2026",
     status: "completed",
-    fontColor: "dark",
   },
   {
     id: "demo-food-truck",
@@ -121,17 +104,13 @@ export const projects: Project[] = [
     longDescription:
       "Concept de site vitrine pour une entreprise fictive : photos déplaçables, cartes de formules en 3D et demande de privatisation.",
     image: "/images/projects/demo-food-truck.webp",
-    logo: "/images/projects/demo-food-truck.webp",
     url: "/demos/food-truck/",
     technologies: ["NextJS", "Tailwind", "Motion"],
     category: "side-project",
     featured: true,
-    size: "medium",
-    icon: "utensils",
-    color: "red",
+    size: "large",
     year: "2026",
     status: "completed",
-    fontColor: "dark",
   },
   {
     id: "casa-catherina",
@@ -140,17 +119,13 @@ export const projects: Project[] = [
     longDescription:
       "Application tablette pour la prise de commande en salle et back-office cuisine.",
     image: "/images/projects/domaine-miraclette.webp",
-    logo: "/images/projects/domaine-miraclette.webp",
     technologies: ["React", "Node.js", "D3.js"],
     category: "side-project",
     featured: true,
     size: "small",
-    icon: "utensils",
-    color: "emerald",
     github: "https://github.com/Yooo31/AzioneCatherina",
     year: "2024",
     status: "archived",
-    fontColor: "light",
   },
   {
     id: "vulpina",
@@ -159,36 +134,33 @@ export const projects: Project[] = [
     longDescription:
       "Site vitrine pour le jeu vidéo Vulpina, avec animations GSAP et intégration multimédia.",
     image: "/images/projects/vulpina.webp",
-    logo: "/images/projects/vulpina.webp",
     url: "https://vulpina.vercel.app",
     github: "https://github.com/Vulpina/Website",
     technologies: ["NextJS", "GSAP", "Tailwind"],
     category: "school",
     featured: true,
     size: "medium",
-    icon: "laptop",
-    color: "indigo",
     year: "2026",
     status: "in-progress",
-    fontColor: "dark",
+    imageFit: "contain",
+    imageBg: "#ffffff",
   },
   {
     id: "portfolio",
     name: "Portfolio V2",
     description: "Ce site web, open-source.",
-    longDescription: "Mon portfolio personnel actuel, axé sur la performance et le design bento.",
+    longDescription: "Mon portfolio personnel, axé sur la performance, le SEO et les animations.",
     image: "/images/projects/portfolio.webp",
-    logo: "/images/projects/portfolio.webp",
     url: "https://portfolio.yoanmartins.fr",
     github: "https://github.com/Yooo31/portfolio-yoan-martins",
     technologies: ["NextJS", "React Server Components"],
     category: "side-project",
     featured: true,
     size: "small",
-    icon: "user",
     year: "2024",
     status: "in-progress",
-    fontColor: "light",
+    imageFit: "contain",
+    imageBg: "#0e0f20",
   },
 ]
 

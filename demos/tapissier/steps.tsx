@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useSpring } from "motion/react"
-import { useReducedMotionSafe } from "@/demos/kit/use-reduced-motion"
+import { useReducedMotionSafe } from "@/components/motion/use-reduced-motion"
 import { useRef } from "react"
 
 const steps = [

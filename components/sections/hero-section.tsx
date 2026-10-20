@@ -1,70 +1,167 @@
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, FileText } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { TechIcon } from "@/components/ui/tech-icon"
+import { Marquee } from "@/components/motion/marquee"
+import { experiences } from "@/data/experiences"
+import { getFeaturedProjects } from "@/data/projects"
+import { techStack } from "@/data/stack"
+
+// Chiffres calculés depuis les données du site : ils restent justes sans mise à jour manuelle.
+const firstJob = Math.min(
+  ...experiences.filter(exp => exp.type === "work").map(exp => Number(exp.startDate))
+)
+const stats = [
+  { value: `${new Date().getFullYear() - firstJob} ans`, label: "d'expérience en entreprise" },
+  { value: `${getFeaturedProjects().length}`, label: "réalisations en ligne ou en cours" },
+  { value: "Bac+5", label: "Expert en informatique" },
+]
+
+const floatingTech = [
+  { icon: "logos:nextjs-icon", label: "Next.js", className: "-left-6 top-10", delay: "0s" },
+  {
+    icon: "logos:typescript-icon",
+    label: "TypeScript",
+    className: "-right-4 top-1/3",
+    delay: "1.5s",
+  },
+  { icon: "logos:nodejs-icon", label: "Node.js", className: "left-2 -bottom-2", delay: "3s" },
+]
+
+const allTech = techStack.flatMap(stack => stack.technologies)
+
+/** Délai d'apparition en cascade (animation CSS : visible dès le premier rendu, sans attendre le JS). */
+const appear = (step: number) => ({ animationDelay: `${step * 0.08}s` })
 
 export function HeroSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 mb-32 flex flex-col md:flex-row items-center gap-12">
-      <div className="flex-1 space-y-8 text-center md:text-left animate-fade-in">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
-          <span>Disponible</span>
+    <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-40">
+      {/* Fond : quadrillage + halos colorés animés */}
+      <div className="absolute inset-0 -z-10 bg-grid" aria-hidden="true" />
+      <div
+        className="absolute -top-24 left-1/4 -z-10 h-80 w-80 rounded-full bg-brand-cyan/25 blur-3xl animate-blob dark:bg-brand-cyan/15"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-20 right-1/5 -z-10 h-96 w-96 rounded-full bg-brand-violet/20 blur-3xl animate-blob [animation-delay:-6s] dark:bg-brand-violet/15"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-[1.4fr_1fr]">
+        <div className="space-y-8 text-center md:text-left">
+          <div
+            className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-300"
+            style={appear(0)}
+          >
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            Disponible pour de nouveaux projets
+          </div>
+
+          <h1
+            className="animate-fade-up text-4xl font-semibold leading-[1.1] tracking-tighter text-balance text-zinc-900 sm:text-5xl lg:text-[3.5rem] dark:text-white"
+            style={appear(1)}
+          >
+            Développeur Full Stack, je crée des sites et applications web{" "}
+            <span className="text-gradient">rapides et soignés.</span>
+          </h1>
+
+          <p
+            className="mx-auto max-w-xl animate-fade-up text-lg leading-relaxed text-zinc-600 md:mx-0 dark:text-zinc-400"
+            style={appear(2)}
+          >
+            Du site vitrine qui transforme vos visiteurs en clients à l&apos;application métier sur
+            mesure : je conçois, développe et mets en ligne des produits performants, accessibles et
+            bien référencés.
+          </p>
+
+          <div
+            className="flex animate-fade-up flex-col justify-center gap-3 sm:flex-row md:justify-start"
+            style={appear(3)}
+          >
+            <Button asChild size="lg" className="group rounded-full">
+              <a href="#contact">
+                Discutons de votre projet
+                <ArrowRight className="transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <a href="#work">Voir mes réalisations</a>
+            </Button>
+          </div>
+
+          <dl
+            className="grid animate-fade-up grid-cols-3 gap-4 border-t border-zinc-200 pt-8 text-left dark:border-zinc-800"
+            style={appear(4)}
+          >
+            {stats.map(stat => (
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+                  {stat.value}
+                </dd>
+                <dd className="mt-1 text-xs leading-snug text-zinc-500 sm:text-sm dark:text-zinc-400">
+                  {stat.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.1] text-zinc-900 dark:text-white">
-          Développeur Full Stack &{" "}
-          <span className="text-zinc-400 dark:text-zinc-600">Architecte UI.</span>
-        </h1>
+        {/* Photo dans un anneau dégradé qui tourne, avec des technos qui flottent autour */}
+        <div
+          className="relative mx-auto h-64 w-64 animate-fade-up sm:h-72 sm:w-72 md:h-80 md:w-80"
+          style={appear(2)}
+        >
+          <div
+            className="absolute -inset-1 rounded-full bg-[conic-gradient(from_0deg,var(--color-brand-cyan),var(--color-brand-violet),var(--color-brand-cyan))] opacity-80 blur-sm animate-spin-slow"
+            aria-hidden="true"
+          />
+          <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white bg-zinc-200 dark:border-zinc-950 dark:bg-zinc-800">
+            <Image
+              src="/images/profile/yoan-martins.webp"
+              alt="Yoan Martins - Développeur Full Stack"
+              fill
+              sizes="(max-width: 640px) 256px, 320px"
+              className="object-cover"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </div>
 
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto md:mx-0 font-normal leading-relaxed">
-          Je conçois des architectures web robustes et des interfaces soignées. Une approche
-          technique rigoureuse au service de l&apos;expérience utilisateur.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-          <Button asChild size="lg" className="group">
-            <Link href="#work">
-              Voir mes réalisations
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="ghost"
-            size="lg"
-            className="group text-zinc-600 dark:text-zinc-400"
-          >
-            <a href="/cv-martins-yoan-2024.pdf" download>
-              <FileText className="w-4 h-4 mr-2" />
-              Télécharger mon CV
-            </a>
-          </Button>
+          {floatingTech.map(tech => (
+            <div
+              key={tech.label}
+              className={`absolute ${tech.className} flex items-center gap-2 rounded-xl border border-zinc-200 bg-white/90 px-3 py-2 text-xs font-medium text-zinc-800 shadow-lg shadow-zinc-900/5 backdrop-blur animate-float dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-200`}
+              style={{ animationDelay: tech.delay }}
+              aria-hidden="true"
+            >
+              <TechIcon icon={tech.icon} className="h-4 w-4" />
+              {tech.label}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Avatar */}
-      <div
-        className="relative w-64 h-64 md:w-80 md:h-80 shrink-0 animate-fade-in"
-        style={{ animationDelay: "0.1s" }}
-      >
-        <div
-          className="absolute inset-0 bg-linear-to-tr from-zinc-200 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900 rounded-full blur-2xl opacity-50 dark:opacity-30"
-          aria-hidden="true"
+      {/* Bandeau des technologies */}
+      <div className="mx-auto mt-20 max-w-6xl px-6">
+        <p className="mb-6 text-center text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+          Les technologies que j&apos;utilise au quotidien
+        </p>
+        <Marquee
+          duration={40}
+          separator={null}
+          className="[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+          itemClassName="flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+          items={allTech.map(tech => (
+            <>
+              <TechIcon icon={tech.icon} className="h-5 w-5" />
+              {tech.name}
+            </>
+          ))}
         />
-        <div className="relative w-full h-full rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden border border-zinc-100 dark:border-zinc-700 flex items-center justify-center group cursor-default">
-          <Image
-            src="/images/profile/yoan-martins.webp"
-            alt="Yoan Martins - Développeur Full Stack"
-            fill
-            sizes="(max-width: 768px) 256px, 320px"
-            className="object-cover"
-            loading="eager"
-            fetchPriority="high"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAYH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBSExBhITQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgADEf/aAAwDAQACEQMRAD8AzHTNaurGzt3tYLYpI5J71L578DGfVS+p6le38peaVQxwBsOAOBSlKmUAO2bvF//Z"
-          />
-        </div>
       </div>
     </section>
   )

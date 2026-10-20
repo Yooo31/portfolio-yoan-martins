@@ -1,374 +1,226 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import { AnimatePresence, motion } from "motion/react"
+import { ArrowUpRight, Code2, Hammer } from "lucide-react"
 import { getFeaturedProjects, type Project } from "@/data/projects"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
-import {
-  Home,
-  ShoppingCart,
-  Smartphone,
-  Palette,
-  TrendingUp,
-  Laptop,
-  ListTodo,
-  Globe,
-  Gamepad2,
-  Utensils,
-  Building2,
-  Briefcase,
-  CalendarDays,
-  User,
-} from "lucide-react"
-import Link from "next/link"
 import { Github } from "@/components/ui/brand-icons"
+import { Reveal } from "@/components/motion/reveal"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { cn } from "@/lib/utils"
 
-const iconMap: Record<string, React.ReactNode> = {
-  home: <Home className="w-6 h-6" />,
-  building: <Building2 className="w-6 h-6" />,
-  cart: <ShoppingCart className="w-6 h-6" />,
-  smartphone: <Smartphone className="w-6 h-6" />,
-  palette: <Palette className="w-6 h-6" />,
-  chart: <TrendingUp className="w-4 h-4" />,
-  laptop: <Laptop className="w-6 h-6" />,
-  tasks: <ListTodo className="w-6 h-6" />,
-  gamepad: <Gamepad2 className="w-6 h-6" />,
-  utensils: <Utensils className="w-6 h-6" />,
-  briefcase: <Briefcase className="w-6 h-6" />,
-  calendar: <CalendarDays className="w-6 h-6" />,
-  user: <User className="w-6 h-6" />,
+const categoryLabels: Record<Project["category"], string> = {
+  professional: "Projet client",
+  "side-project": "Side-project",
+  school: "Projet d'école",
+  "open-source": "Open source",
 }
 
-const colorMap: Record<string, string> = {
-  red: "text-red-500",
-  indigo: "text-indigo-500",
-  emerald: "text-emerald-600 dark:text-emerald-400",
-  blue: "text-blue-600 dark:text-blue-400",
+const filterLabels: Record<Project["category"], string> = {
+  professional: "Clients",
+  "side-project": "Side-projects",
+  school: "École",
+  "open-source": "Open source",
 }
 
-function ProjectLinks({ project, className }: { project: Project; className?: string }) {
-  if (!project.github && !project.url) return null
+type Filter = "all" | Project["category"]
+
+/** Lien principal de la carte : la démo, le site en ligne, ou à défaut le code. */
+export function primaryLink(project: Project) {
+  if (project.url?.startsWith("/"))
+    return { href: project.url, label: "Voir la démo", external: false }
+  if (project.url) return { href: project.url, label: "Voir le site", external: true }
+  if (project.github) return { href: project.github, label: "Voir le code", external: true }
+  return null
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  const link = primaryLink(project)
+  const showGithub = project.github && link?.href !== project.github
 
   return (
-    <div className={cn("flex gap-2", className)}>
-      {project.github && (
-        <Link
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 bg-white/90 dark:bg-zinc-800/90 backdrop-blur-md rounded-full text-zinc-800 dark:text-zinc-200 hover:scale-110 transition-all shadow-sm"
-        >
-          <Github className="w-4 h-4" />
-        </Link>
-      )}
-      {project.url && (
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 bg-white/80 dark:bg-black/50 backdrop-blur-md rounded-full text-zinc-800 dark:text-zinc-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-sm"
-          title="Voir le projet en ligne"
-        >
-          <Globe className="w-4 h-4" />
-        </Link>
-      )}
-    </div>
-  )
-}
-
-const BackgroundImage = ({ image }: { image?: string }) => {
-  if (!image) return null
-  return (
-    <div
-      className="absolute inset-0 z-0 scale-100 group-hover:scale-110 transition-all duration-700 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${image})` }}
-    />
-  )
-}
-
-function ProjectCardLarge({ project, className }: { project: Project; className?: string }) {
-  const textColor =
-    project.fontColor === "dark"
-      ? "!text-zinc-900 dark:!text-zinc-900 dark:group-hover:!text-white"
-      : "!text-white group-hover:!text-zinc-900 dark:group-hover:!text-white"
-
-  return (
-    <article
+    <motion.article
+      layout
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "bento-card relative group col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800",
-        className
+        "group relative flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white transition-[translate,box-shadow,border-color] duration-300 dark:border-zinc-800 dark:bg-zinc-900/40",
+        link &&
+          "hover:-translate-y-1 hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-900/10 focus-within:ring-2 focus-within:ring-violet-500 dark:hover:border-zinc-700 dark:hover:shadow-black/50",
+        project.size === "large" && "md:col-span-2"
       )}
     >
-      <BackgroundImage image={project.image} />
+      <div
+        className={cn("relative overflow-hidden bg-zinc-100 dark:bg-zinc-800", "h-52 sm:h-60")}
+        style={project.imageBg ? { background: project.imageBg } : undefined}
+      >
+        <Image
+          src={project.image}
+          alt=""
+          fill
+          sizes={
+            project.size === "large"
+              ? "(max-width: 768px) 100vw, 760px"
+              : "(max-width: 768px) 100vw, 380px"
+          }
+          className={cn(
+            "transition-transform duration-700 ease-out group-hover:scale-105",
+            project.imageFit === "contain" ? "object-contain p-8" : "object-cover object-top"
+          )}
+        />
+        <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
+          <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-zinc-700 shadow-sm backdrop-blur dark:bg-zinc-950/80 dark:text-zinc-300">
+            {categoryLabels[project.category]}
+          </span>
+          {project.status === "in-progress" && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100/95 px-2.5 py-1 text-xs font-medium text-amber-900 shadow-sm backdrop-blur dark:bg-amber-950/90 dark:text-amber-200">
+              <Hammer className="h-3 w-3" aria-hidden="true" />
+              En cours
+            </span>
+          )}
+        </div>
+      </div>
 
-      <div className="absolute inset-0 bg-linear-to-t from-zinc-100/95 via-zinc-100/80 to-zinc-100/60 dark:from-zinc-900/95 dark:via-zinc-900/80 dark:to-zinc-900/60 opacity-0 group-hover:opacity-100 z-10" />
-
-      <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
-        <div className="flex justify-between items-start">
-          <div
-            className={cn(
-              "w-12 h-12 bg-white dark:bg-black/50 rounded-xl flex items-center justify-center backdrop-blur-sm shadow-sm",
-              project.color ? colorMap[project.color] : "text-zinc-600"
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-2 flex items-baseline justify-between gap-4">
+          <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white">
+            {link ? (
+              <a
+                href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                // Le lien couvre toute la carte (pseudo-élément) : elle est cliquable partout.
+                className="outline-none after:absolute after:inset-0 after:content-['']"
+              >
+                {project.name}
+              </a>
+            ) : (
+              project.name
             )}
-          >
-            {project.icon && iconMap[project.icon]}
-          </div>
-
-          <span
-            className={cn(
-              "px-3 py-1 bg-white/50 dark:bg-black/30 backdrop-blur-md rounded-full text-xs font-medium border border-white/20 dark:border-white/10",
-              textColor
-            )}
-          >
+          </h3>
+          <span className="shrink-0 font-mono text-xs text-zinc-500 dark:text-zinc-400">
             {project.year}
           </span>
         </div>
 
-        <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="flex justify-between items-end mb-2">
-            <h3 className={cn("text-2xl font-semibold", textColor)}>{project.name}</h3>
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-              <ProjectLinks project={project} />
-            </div>
-          </div>
+        <p className="mb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {project.longDescription ?? project.description}
+        </p>
 
-          <p
-            className={cn(
-              "text-sm mb-4 line-clamp-2 group-hover:line-clamp-none transition-all",
-              textColor
-            )}
-          >
-            {project.longDescription || project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
-            {project.technologies.map(tech => (
-              <Badge
-                key={tech}
-                variant="secondary"
-                className="bg-white/70 dark:bg-zinc-800/80 hover:bg-white dark:hover:bg-zinc-700"
-              >
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-function ProjectCardSmall({ project, className }: { project: Project; className?: string }) {
-  const textColor =
-    project.fontColor === "dark"
-      ? "!text-zinc-900 dark:!text-zinc-900 dark:group-hover:!text-white"
-      : "!text-white group-hover:!text-zinc-900 dark:group-hover:!text-white"
-
-  return (
-    <article
-      className={cn(
-        "bento-card relative group col-span-1 overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800",
-        className
-      )}
-    >
-      <BackgroundImage image={project.image} />
-
-      <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 bg-zinc-50/80 dark:bg-zinc-900/80" />
-
-      <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <ProjectLinks project={project} />
-      </div>
-
-      <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
-        <h3 className={cn("font-medium mb-1 truncate pr-8 drop-shadow-sm", textColor)}>
-          {project.name}
-        </h3>
-        <p className={cn("text-xs mb-3 line-clamp-2", textColor)}>{project.description}</p>
-        <div className="flex flex-wrap gap-1.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-          {project.technologies.slice(0, 2).map(tech => (
-            <span
+        <ul className="mb-6 flex flex-wrap gap-2" aria-label="Technologies">
+          {project.technologies.map(tech => (
+            <li
               key={tech}
-              className="px-2 py-0.5 text-[10px] rounded border backdrop-blur-md shadow-sm bg-white/80 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700"
+              className="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-300"
             >
               {tech}
-            </span>
+            </li>
           ))}
-        </div>
-      </div>
-    </article>
-  )
-}
+        </ul>
 
-function ProjectCardMedium({ project, className }: { project: Project; className?: string }) {
-  const isFeatured = project.category === "professional"
-  const textColor =
-    project.fontColor === "dark"
-      ? "!text-zinc-900 dark:!text-zinc-900 dark:group-hover:!text-white"
-      : "!text-white group-hover:!text-zinc-900 dark:group-hover:!text-white"
-
-  return (
-    <article
-      className={cn(
-        "bento-card relative group col-span-1 sm:col-span-2 overflow-hidden rounded-3xl border",
-        isFeatured
-          ? "border-indigo-100 dark:border-zinc-800"
-          : "border-zinc-200 dark:border-zinc-800",
-        className
-      )}
-    >
-      <BackgroundImage image={project.image} />
-
-      <div className="absolute inset-0 bg-linear-to-t from-white/90 via-white/50 to-white/20 dark:from-zinc-900/90 dark:via-zinc-900/50 dark:to-zinc-900/20 z-10 opacity-0 group-hover:opacity-100" />
-
-      <div className="absolute inset-0 p-6 flex flex-col justify-between z-20">
-        <div className="flex justify-between items-start">
-          <div
-            className={cn(
-              "p-2 rounded-lg bg-white/80 dark:bg-zinc-800/80 backdrop-blur-md shadow-sm",
-              colorMap[project.color || "blue"]
-            )}
-          >
-            {project.icon && iconMap[project.icon]}
-          </div>
-          <div className="flex items-center gap-3">
+        <div className="mt-auto flex items-center justify-between gap-4">
+          {link ? (
             <span
-              className={cn(
-                "text-[10px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity bg-white/50 dark:bg-black/50 px-2 py-1 rounded-full backdrop-blur-md",
-                textColor
-              )}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white"
+              aria-hidden="true"
             >
-              {project.year}
+              {link.label === "Voir le code" ? <Code2 className="h-4 w-4" /> : null}
+              {link.label}
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <ProjectLinks project={project} />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 className={cn("font-medium text-lg mb-1 drop-shadow-sm", textColor)}>
-            {project.name}
-          </h3>
-          <p className={cn("text-sm mb-4 max-w-sm font-medium", textColor)}>
-            {project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-            {project.technologies.map(tech => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-[10px] bg-white/90 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-600 dark:text-zinc-300 shadow-sm backdrop-blur-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-function ProjectCardWithIcon({ project, className }: { project: Project; className?: string }) {
-  const iconBgColor =
-    project.color === "emerald"
-      ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400"
-      : "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400"
-  const textColor =
-    project.fontColor === "dark"
-      ? "!text-zinc-900 dark:!text-zinc-900 dark:group-hover:!text-white"
-      : "!text-white group-hover:!text-zinc-900 dark:group-hover:!text-white"
-
-  return (
-    <article
-      className={cn(
-        "bento-card relative group col-span-1 overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800",
-        className
-      )}
-    >
-      <BackgroundImage image={project.image} />
-
-      <div className="absolute inset-0 bg-white/80 dark:bg-zinc-900/80 z-10 opacity-0 group-hover:opacity-100" />
-
-      <div className="absolute top-3 right-3 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <ProjectLinks project={project} />
-      </div>
-
-      <div className="absolute inset-0 p-6 flex flex-col justify-between z-20">
-        <div
-          className={cn(
-            "w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 duration-300 backdrop-blur-sm shadow-sm",
-            iconBgColor
+          ) : (
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">Bientôt en ligne</span>
           )}
-        >
-          {project.icon && iconMap[project.icon]}
-        </div>
-        <div>
-          <h3 className={cn("font-medium mb-1 drop-shadow-sm", textColor)}>{project.name}</h3>
-          <p className={cn("text-[10px] mb-2 font-medium", textColor)}>
-            {project.year} • {project.category}
-          </p>
-          <div className="flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-            {project.technologies.slice(0, 1).map(tech => (
-              <span
-                key={tech}
-                className="px-2 py-0.5 text-[10px] bg-white/80 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-600 dark:text-zinc-400 backdrop-blur-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+
+          {showGithub && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              // Au-dessus du lien principal qui couvre la carte
+              className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-white dark:hover:text-white"
+              aria-label={`Code source de ${project.name} sur GitHub`}
+            >
+              <Github className="h-3.5 w-3.5" />
+              Code
+            </a>
+          )}
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
 
 export function ProjectsSection() {
-  const featuredProjects = getFeaturedProjects()
+  const projects = getFeaturedProjects()
+  const categories = [...new Set(projects.map(project => project.category))]
+  const [filter, setFilter] = useState<Filter>("all")
+  const visible = filter === "all" ? projects : projects.filter(p => p.category === filter)
 
-  const renderProject = (project: Project, index: number) => {
-    const isSecondToLast = index === featuredProjects.length - 2
-    const isLast = index === featuredProjects.length - 1
-
-    const orderClass = isSecondToLast
-      ? "sm:order-[6] lg:order-none"
-      : isLast
-        ? "sm:order-[5] lg:order-none"
-        : ""
-
-    if (project.size === "large") {
-      return <ProjectCardLarge key={project.id} project={project} className={orderClass} />
-    }
-
-    if (project.size === "medium") {
-      return <ProjectCardMedium key={project.id} project={project} className={orderClass} />
-    }
-
-    if (project.icon === "utensils" || project.icon === "user") {
-      return <ProjectCardWithIcon key={project.id} project={project} className={orderClass} />
-    }
-    return <ProjectCardSmall key={project.id} project={project} className={orderClass} />
-  }
+  const filters: { value: Filter; label: string; count: number }[] = [
+    { value: "all", label: "Tous", count: projects.length },
+    ...categories.map(category => ({
+      value: category,
+      label: filterLabels[category],
+      count: projects.filter(p => p.category === category).length,
+    })),
+  ]
 
   return (
-    <section id="work" className="max-w-6xl mx-auto px-6 mb-32">
-      <div className="flex items-end justify-between mb-12">
-        <div className="space-y-1">
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-            Réalisations & Side-projects
-          </h2>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-            Une sélection de mes travaux récents, du web au mobile.
-          </p>
-        </div>
+    <section id="work" className="mx-auto max-w-6xl px-6 py-24">
+      <Reveal>
+        <SectionHeading
+          eyebrow="Réalisations"
+          title="Des projets concrets, en ligne"
+          description="Sites clients, applications et concepts : une sélection de mes travaux récents."
+        />
+      </Reveal>
 
-        <span className="hidden md:inline-flex items-center gap-2 text-xs font-medium text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800">
-          <CalendarDays className="w-3 h-3" />
-          {new Date().getFullYear()} Edition
-        </span>
+      <div
+        className="mb-10 flex flex-wrap justify-center gap-2"
+        role="group"
+        aria-label="Filtrer les réalisations"
+      >
+        {filters.map(item => {
+          const isActive = filter === item.value
+          return (
+            <button
+              key={item.value}
+              type="button"
+              aria-pressed={isActive}
+              onClick={() => setFilter(item.value)}
+              className={cn(
+                "relative isolate rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                isActive
+                  ? "text-white dark:text-zinc-900"
+                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              )}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="project-filter"
+                  className="absolute inset-0 -z-10 rounded-full bg-zinc-900 dark:bg-white"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                />
+              )}
+              {item.label}
+              <span className="ml-1.5 text-xs opacity-60">{item.count}</span>
+            </button>
+          )
+        })}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[280px] gap-4">
-        {featuredProjects.map(renderProject)}
-      </div>
+      <Reveal>
+        <motion.div layout className="grid gap-6 md:grid-cols-2 md:grid-flow-dense lg:grid-cols-3">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visible.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </Reveal>
     </section>
   )
 }

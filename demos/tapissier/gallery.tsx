@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { AnimatePresence, motion } from "motion/react"
-import { useReducedMotionSafe } from "@/demos/kit/use-reduced-motion"
+import { useReducedMotionSafe } from "@/components/motion/use-reduced-motion"
 import { useState } from "react"
 import { BeforeAfter } from "@/demos/kit/before-after"
 import { IMAGES } from "./images"
