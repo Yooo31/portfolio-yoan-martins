@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/shared/theme-provider"
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,13 +11,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yoanmartins.fr"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Yoan Martins - Développeur Full Stack & Architecte UI",
+    default: SITE_TITLE,
     template: "%s | Yoan Martins",
   },
-  description:
-    "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées. React, NextJS, TypeScript, Node.js.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Développeur Full Stack",
     "React",
@@ -29,31 +29,31 @@ export const metadata: Metadata = {
     "Backend",
     "Yoan Martins",
   ],
-  authors: [{ name: "Yoan Martins", url: "https://yoanmartins.fr" }],
+  authors: [{ name: "Yoan Martins", url: SITE_URL }],
   creator: "Yoan Martins",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://yoanmartins.fr",
+    url: "/",
     siteName: "Yoan Martins - Portfolio",
-    title: "Yoan Martins - Développeur Full Stack & Architecte UI",
+    title: SITE_TITLE,
     description:
       "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/og-image.jpg",
+        width: 800,
+        height: 533,
         alt: "Yoan Martins - Développeur Full Stack",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yoan Martins - Développeur Full Stack & Architecte UI",
+    title: SITE_TITLE,
     description:
       "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

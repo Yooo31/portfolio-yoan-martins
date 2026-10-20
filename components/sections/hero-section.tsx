@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="flex-1 space-y-8 text-center md:text-left animate-fade-in">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-xs font-medium text-zinc-600 dark:text-zinc-400">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
-          <span>Disponnible</span>
+          <span>Disponible</span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.1] text-zinc-900 dark:text-white">
@@ -54,12 +54,13 @@ export function HeroSection() {
         />
         <div className="relative w-full h-full rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden border border-zinc-100 dark:border-zinc-700 flex items-center justify-center group cursor-default">
           <Image
-            src="/images/profile/yoan-martins.png"
+            src="/images/profile/yoan-martins.webp"
             alt="Yoan Martins - Développeur Full Stack"
             fill
             sizes="(max-width: 768px) 256px, 320px"
             className="object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAYH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBSExBhITQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgADEf/aAAwDAQACEQMRAD8AzHTNaurGzt3tYLYpI5J71L578DGfVS+p6le38peaVQxwBsOAOBSlKmUAO2bvF//Z"
           />

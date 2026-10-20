@@ -1,8 +1,6 @@
-"use client"
-
 import { Monitor, Server, Settings } from "lucide-react"
 import { techStack } from "@/data/stack"
-import { Icon } from "@iconify/react"
+import { TechIcon } from "@/components/ui/tech-icon"
 
 const iconMap: Record<string, React.ReactNode> = {
   monitor: <Monitor className="w-5 h-5" />,
@@ -39,7 +37,7 @@ export function StackSection() {
                   }`}
                 >
                   <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-white dark:bg-zinc-900/50">
-                    <Icon icon={tech.icon} className="w-5 h-5" />
+                    <TechIcon icon={tech.icon} className="w-5 h-5" />
                   </div>
                   <span className="text-zinc-700 dark:text-zinc-300 font-medium text-sm">
                     {tech.name}
