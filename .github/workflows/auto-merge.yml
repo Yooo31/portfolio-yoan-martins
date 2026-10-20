@@ -4,7 +4,9 @@ name: Auto-merge Dependabot PRs
 # « CI » est vert, et jamais s'il est rouge. Prérequis côté dépôt : « Allow auto-merge » activé et « CI » en
 # contrôle requis dans la protection de develop.
 on:
+  # Dependabot cible develop (branche par défaut) : ignorer la PR de promotion vers main.
   pull_request:
+    branches: [develop]
     types: [opened, synchronize, reopened]
 
 permissions:

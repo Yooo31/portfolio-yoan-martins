@@ -3,8 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main, develop]
+  # PR vers develop uniquement : la seule PR vers main est la promotion hebdomadaire, déjà vérifiée
+  # par la CI de weekly-release.yml et fusionnée aussitôt (un run lancé dessus échouerait à vide).
   pull_request:
-    branches: [main, develop]
+    branches: [develop]
   # Réutilisé par weekly-release.yml avant chaque promotion develop → main
   workflow_call:
 
