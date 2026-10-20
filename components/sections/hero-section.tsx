@@ -14,7 +14,7 @@ const firstJob = Math.min(
 const stats = [
   { value: `${new Date().getFullYear() - firstJob} ans`, label: "d'expérience en entreprise" },
   { value: `${getFeaturedProjects().length}`, label: "réalisations en ligne ou en cours" },
-  { value: "Bac+5", label: "Expert en informatique" },
+  { value: "Bac+5", label: "Master Expert en informatique" },
 ]
 
 const floatingTech = [

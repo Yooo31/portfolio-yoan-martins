@@ -49,26 +49,21 @@ function ProjectCard({ project }: { project: Project }) {
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white transition-[translate,box-shadow,border-color] duration-300 dark:border-zinc-800 dark:bg-zinc-900/40",
         link &&
-          "hover:-translate-y-1 hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-900/10 focus-within:ring-2 focus-within:ring-violet-500 dark:hover:border-zinc-700 dark:hover:shadow-black/50",
-        project.size === "large" && "md:col-span-2"
+          "hover:-translate-y-1 hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-900/10 focus-within:ring-2 focus-within:ring-violet-500 dark:hover:border-zinc-700 dark:hover:shadow-black/50"
       )}
     >
       <div
-        className={cn("relative overflow-hidden bg-zinc-100 dark:bg-zinc-800", "h-52 sm:h-60")}
+        className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800"
         style={project.imageBg ? { background: project.imageBg } : undefined}
       >
         <Image
           src={project.image}
           alt=""
           fill
-          sizes={
-            project.size === "large"
-              ? "(max-width: 768px) 100vw, 760px"
-              : "(max-width: 768px) 100vw, 380px"
-          }
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
           className={cn(
             "transition-transform duration-700 ease-out group-hover:scale-105",
-            project.imageFit === "contain" ? "object-contain p-8" : "object-cover object-top"
+            project.imageFit === "contain" ? "object-contain p-10" : "object-cover object-top"
           )}
         />
         <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
@@ -120,7 +115,7 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
 
-        <div className="mt-auto flex items-center justify-between gap-4">
+        <div className="mt-auto flex min-h-8 items-center justify-between gap-4">
           {link ? (
             <span
               className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white"
@@ -213,7 +208,7 @@ export function ProjectsSection() {
       </div>
 
       <Reveal>
-        <motion.div layout className="grid gap-6 md:grid-cols-2 md:grid-flow-dense lg:grid-cols-3">
+        <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout" initial={false}>
             {visible.map(project => (
               <ProjectCard key={project.id} project={project} />

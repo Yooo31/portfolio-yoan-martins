@@ -9,8 +9,6 @@ export interface Project {
   technologies: string[]
   category: "professional" | "school" | "side-project" | "open-source"
   featured: boolean
-  /** "large" : carte sur deux colonnes ; "small" et "medium" : une colonne */
-  size: "small" | "medium" | "large"
   year: string
   status?: "completed" | "in-progress" | "archived"
   /** "contain" pour un logo à afficher en entier (par défaut : l'image remplit le cadre) */
@@ -32,7 +30,6 @@ export const projects: Project[] = [
     technologies: ["Astro.js", "Tailwind", "ShadCn"],
     category: "professional",
     featured: true,
-    size: "large",
     year: "2026",
     status: "completed",
     imageFit: "contain",
@@ -48,7 +45,6 @@ export const projects: Project[] = [
     category: "side-project",
     github: "https://github.com/Yooo31/four-connection-p2p",
     featured: true,
-    size: "small",
     year: "2025",
     status: "completed",
   },
@@ -62,7 +58,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "Docker", "PostgreSQL"],
     category: "school",
     featured: true,
-    size: "small",
     year: "2026",
     status: "in-progress",
   },
@@ -76,7 +71,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "TypeScript", "Tailwind"],
     category: "professional",
     featured: true,
-    size: "medium",
     github: "https://github.com/Yooo31/vitrine-yoan-martins",
     url: "https://yoanmartins.fr",
     year: "2026",
@@ -93,7 +87,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "Tailwind", "Motion"],
     category: "side-project",
     featured: true,
-    size: "large",
     year: "2026",
     status: "completed",
   },
@@ -108,7 +101,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "Tailwind", "Motion"],
     category: "side-project",
     featured: true,
-    size: "large",
     year: "2026",
     status: "completed",
   },
@@ -122,7 +114,6 @@ export const projects: Project[] = [
     technologies: ["React", "Node.js", "D3.js"],
     category: "side-project",
     featured: true,
-    size: "small",
     github: "https://github.com/Yooo31/AzioneCatherina",
     year: "2024",
     status: "archived",
@@ -139,7 +130,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "GSAP", "Tailwind"],
     category: "school",
     featured: true,
-    size: "medium",
     year: "2026",
     status: "in-progress",
     imageFit: "contain",
@@ -156,7 +146,6 @@ export const projects: Project[] = [
     technologies: ["NextJS", "React Server Components"],
     category: "side-project",
     featured: true,
-    size: "small",
     year: "2024",
     status: "in-progress",
     imageFit: "contain",

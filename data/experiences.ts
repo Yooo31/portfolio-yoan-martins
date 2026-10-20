@@ -11,23 +11,33 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: "safti-cdi",
+    company: "Safti",
+    role: "Développeur Full Stack (CDI)",
+    description:
+      "Développement et évolution des applications métiers : performance, scalabilité et qualité du code.",
+    startDate: "2025",
+    isCurrent: true,
+    type: "work",
+  },
+  {
     id: "safti",
     company: "Safti",
     role: "Alternant Développeur Full Stack",
     description:
       "Optimisation des outils internes et refonte de l'architecture frontend. Travail sur la performance et la scalabilité des applications métiers.",
     startDate: "2023",
-    endDate: "2026",
-    isCurrent: true,
+    endDate: "2025",
+    isCurrent: false,
     type: "work",
   },
   {
     id: "ynov",
     company: "Ynov Campus",
-    role: "Master 2 Expert Informatique",
+    role: "Master 2 Expert Informatique (diplômé)",
     startDate: "2023",
-    endDate: "2026",
-    isCurrent: true,
+    endDate: "2025",
+    isCurrent: false,
     type: "education",
   },
   {
