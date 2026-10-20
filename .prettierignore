@@ -7,3 +7,7 @@ coverage
 .vercel
 pnpm-lock.yaml
 CHANGELOG.md
+test-results
+playwright-report
+.lighthouseci
+AGENTS.md

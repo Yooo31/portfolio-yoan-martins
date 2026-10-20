@@ -1,13 +1,11 @@
 name: Auto-merge Dependabot PRs
 
+# Active la fusion automatique sur chaque PR Dependabot : GitHub fusionne (squash) dès que le contrôle requis
+# « CI » est vert, et jamais s'il est rouge. Prérequis côté dépôt : « Allow auto-merge » activé et « CI » en
+# contrôle requis dans la protection de develop.
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  check_suite:
-    types: [completed]
-  workflow_run:
-    workflows: ["CI/CD Pipeline"]
-    types: [completed]
 
 permissions:
   contents: write
@@ -17,34 +15,21 @@ jobs:
   auto-merge:
     name: Auto-merge Dependabot PRs
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    # L'auteur de la PR, pas l'acteur de l'événement : reste vrai après un rebase demandé à la main.
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    env:
+      PR_URL: ${{ github.event.pull_request.html_url }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v2
+        uses: dependabot/fetch-metadata@v3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Auto-approve PR
-        run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Signaler une mise à jour majeure
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major' && github.event.action == 'opened'
+        run: gh pr comment "$PR_URL" --body "⚠️ Mise à jour majeure. Elle sera fusionnée automatiquement si la CI (lint, types, audit, build, tests e2e, Lighthouse) passe."
 
-      - name: Enable auto-merge for patch & minor updates
-        if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+      - name: Activer la fusion automatique
         run: gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable auto-merge for major updates
-        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
-        run: |
-          gh pr comment "$PR_URL" --body "⚠️ Mise à jour majeure détectée. Auto-merge activé, mais vérifie les breaking changes si la CI échoue."
-          gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

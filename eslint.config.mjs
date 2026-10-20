@@ -11,6 +11,8 @@ export default [
       ".next/",
       "out/",
       "dist/",
+      "test-results/",
+      "playwright-report/",
       ".vercel/",
       "*.d.ts",
       "*.config.js",

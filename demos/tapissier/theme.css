@@ -1,0 +1,137 @@
+/* Thème tapissier d'ameublement : crème, terracotta, bleu canard. Toutes les règles sont scopées sous .tp-site. */
+.tp-site {
+  --tp-cream: #f6efe3;
+  --tp-paper: #fbf7f0;
+  --tp-ink: #22302f;
+  --tp-terracotta: #b8583a;
+  --tp-canard: #0f5a63;
+  --tp-canard-deep: #0a3f46;
+  --tp-blush: #f0c9b4;
+  --tp-damask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23b8583a' stroke-width='1.4'%3E%3Cpath d='M28 4c6 8 6 14 0 22c-6-8-6-14 0-22zM28 52c6-8 6-14 0-22c-6 8-6 14 0 22zM4 28c8-6 14-6 22 0c-8 6-14 6-22 0zM52 28c-8-6-14-6-22 0c8 6 14 6 22 0z'/%3E%3Ccircle cx='28' cy='28' r='2.4' fill='%23b8583a'/%3E%3Cpath d='M0 0l8 8M56 0l-8 8M0 56l8-8M56 56l-8-8' stroke-opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+
+  --background: var(--tp-cream);
+  --foreground: var(--tp-ink);
+  --primary: var(--tp-terracotta);
+  --primary-foreground: var(--tp-cream);
+  --popover: var(--tp-paper);
+  --popover-foreground: var(--tp-ink);
+  --muted: rgb(34 48 47 / 0.06);
+  --muted-foreground: rgb(34 48 47 / 0.6);
+  --accent: rgb(15 90 99 / 0.1);
+  --accent-foreground: var(--tp-ink);
+  --border: rgb(34 48 47 / 0.15);
+  --input: rgb(34 48 47 / 0.2);
+  --ring: var(--tp-canard);
+  --radius: 0.25rem;
+
+  background: var(--tp-cream);
+  color: var(--tp-ink);
+  font-family: var(--tp-body), system-ui, sans-serif;
+}
+
+.tp-site .font-tp-display {
+  font-family: var(--tp-display), Georgia, serif;
+  font-weight: 500;
+}
+
+.tp-site .tp-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--tp-terracotta);
+}
+
+/* ---------- Motifs de tissu ---------- */
+.tp-site .tp-pattern-ticking {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--tp-canard) 0 7px,
+    var(--tp-cream) 7px 15px,
+    var(--tp-terracotta) 15px 17px,
+    var(--tp-cream) 17px 25px
+  );
+}
+
+.tp-site .tp-pattern-damask {
+  background-color: var(--tp-blush);
+  background-image: var(--tp-damask);
+  background-size: 56px 56px;
+}
+
+.tp-site .tp-pattern-check {
+  background-color: var(--tp-cream);
+  background-image:
+    repeating-linear-gradient(0deg, rgb(15 90 99 / 0.55) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(90deg, rgb(15 90 99 / 0.55) 0 6px, transparent 6px 12px);
+}
+
+.tp-site .tp-pattern-velvet {
+  background:
+    radial-gradient(120% 80% at 30% 20%, rgb(255 255 255 / 0.22), transparent 55%),
+    linear-gradient(160deg, #1a7480, var(--tp-canard-deep));
+}
+
+/* Fond velours bleu canard pour les sections sombres */
+.tp-site .tp-velvet-bg {
+  background:
+    radial-gradient(70% 60% at 85% 0%, rgb(255 255 255 / 0.08), transparent 60%),
+    linear-gradient(170deg, var(--tp-canard), var(--tp-canard-deep));
+}
+
+/* Toile tissée très légère */
+.tp-site .tp-toile {
+  background-color: var(--tp-paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgb(34 48 47 / 0.025) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgb(34 48 47 / 0.025) 0 1px, transparent 1px 4px);
+}
+
+/* Lambrequin festonné sous l'en-tête */
+.tp-site .tp-scallop {
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% 10px no-repeat,
+    radial-gradient(circle 13px at 13px 10px, #000 97%, transparent) 0 0 / 26px 100% repeat-x;
+  mask:
+    linear-gradient(#000 0 0) top / 100% 10px no-repeat,
+    radial-gradient(circle 13px at 13px 10px, #000 97%, transparent) 0 0 / 26px 100% repeat-x;
+}
+
+/* Échantillon au bord cranté (ciseaux à cranter) */
+.tp-site .tp-swatch {
+  border-radius: 2px 2px 0 0;
+  filter: drop-shadow(0 10px 14px rgb(34 48 47 / 0.35));
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 8px
+    100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 8px 100%;
+}
+
+/* Surpiqûre autour du comparateur */
+.tp-site .tp-stitched {
+  outline: 2px dashed rgb(246 239 227 / 0.75);
+  outline-offset: -12px;
+}
+
+.tp-site .tp-card {
+  background: var(--tp-paper);
+  box-shadow: 0 30px 70px -40px rgb(34 48 47 / 0.55);
+}
+.tp-site .tp-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1.5px dashed rgb(184 88 58 / 0.35);
+  pointer-events: none;
+}
+
+.tp-site .tp-noscrollbar {
+  scrollbar-width: none;
+}
+.tp-site .tp-noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tp-site ::selection {
+  background: var(--tp-terracotta);
+  color: var(--tp-cream);
+}

@@ -1,32 +1,41 @@
 name: Release
 
+# Crée le tag et la release GitHub (notes générées depuis les commits) pour l'état courant de main,
+# puis vérifie que Vercel a bien déployé ce commit en production.
+# Déclenché par weekly-release.yml chaque lundi, ou par un push manuel sur main.
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
   issues: write
   pull-requests: write
+  deployments: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
     name: Semantic Release
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    timeout-minutes: 20
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: "pnpm"
@@ -41,3 +50,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm exec semantic-release
+
+      - name: Vérifier le déploiement Vercel de ce commit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for attempt in $(seq 1 40); do
+            id=$(gh api "repos/$GITHUB_REPOSITORY/deployments?sha=$GITHUB_SHA&environment=Production" --jq '.[0].id // empty')
+            state=""
+            if [ -n "$id" ]; then
+              state=$(gh api "repos/$GITHUB_REPOSITORY/deployments/$id/statuses" --jq '.[0].state // empty')
+            fi
+            echo "tentative $attempt : déploiement ${id:-absent}, état ${state:-inconnu}"
+            if [ "$state" = "success" ]; then
+              echo "✅ Production déployée pour $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            if [ "$state" = "failure" ] || [ "$state" = "error" ]; then
+              echo "::error::Le déploiement Vercel a échoué"
+              exit 1
+            fi
+            sleep 15
+          done
+          echo "::error::Aucun déploiement Vercel réussi pour $GITHUB_SHA après 10 minutes"
+          exit 1

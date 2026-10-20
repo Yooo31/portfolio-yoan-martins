@@ -17,21 +17,13 @@ updates:
       - "automated"
     versioning-strategy: increase
     groups:
-      development-dependencies:
+      # Une seule PR hebdomadaire pour tous les correctifs et mises à jour mineures : moins de conflits de lockfile.
+      # Les mises à jour majeures arrivent une par une.
+      minor-and-patch:
         patterns:
-          - "@types/*"
-          - "@typescript-eslint/*"
-          - "eslint*"
-          - "prettier"
+          - "*"
         update-types:
           - "minor"
-          - "patch"
-      production-dependencies:
-        patterns:
-          - "next"
-          - "react"
-          - "react-dom"
-        update-types:
           - "patch"
 
   - package-ecosystem: "github-actions"
@@ -47,3 +39,7 @@ updates:
     labels:
       - "github-actions"
       - "automated"
+    groups:
+      actions:
+        patterns:
+          - "*"
