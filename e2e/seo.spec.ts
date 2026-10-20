@@ -12,12 +12,15 @@ test.describe("SEO", () => {
     await page.goto("/")
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${SITE_URL}/`)
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", `${SITE_URL}/`)
-    for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
-      await expect(page.locator(selector)).toHaveAttribute("content", `${SITE_URL}/og-image.jpg`)
-    }
+    const ogImage = page.locator('meta[property="og:image"]')
+    await expect(ogImage).toHaveAttribute("content", new RegExp(`^${SITE_URL}/opengraph-image`))
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+      "content",
+      String(await ogImage.getAttribute("content"))
+    )
   })
 
-  test("les dimensions déclarées de l'image Open Graph sont les vraies", async ({ page }) => {
+  test("l'image Open Graph fait 1200×630, comme déclaré", async ({ page }) => {
     await page.goto("/")
     const url = await page.locator('meta[property="og:image"]').getAttribute("content")
     const size = await page.evaluate(
@@ -29,14 +32,17 @@ test.describe("SEO", () => {
       },
       String(url).replace(SITE_URL, "")
     )
-    await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
-      "content",
-      `${size.width}`
-    )
-    await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute(
-      "content",
-      `${size.height}`
-    )
+    expect(size).toEqual({ width: 1200, height: 630 })
+    await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute("content", "1200")
+    await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute("content", "630")
+  })
+
+  test("l'image Open Graph (sans extension) est servie en image/png par Vercel", () => {
+    const config = JSON.parse(readFileSync("vercel.json", "utf8")) as {
+      headers: { source: string; headers: { key: string; value: string }[] }[]
+    }
+    const rule = config.headers.find(rule => rule.source === "/opengraph-image")
+    expect(rule?.headers).toContainEqual({ key: "Content-Type", value: "image/png" })
   })
 
   test("données structurées Person et WebSite valides", async ({ page }) => {
