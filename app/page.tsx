@@ -6,6 +6,8 @@ import { AboutSection } from "@/components/sections/about-section"
 import { StackSection } from "@/components/sections/stack-section"
 import { ProjectsSection } from "@/components/sections/projects-section"
 import { ContactSection } from "@/components/sections/contact-section"
+import { ServicesSection } from "@/components/sections/services-section"
+import { MotionSafe } from "@/components/motion/motion-safe"
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site"
 
 // Canonical ici et pas dans le layout : les démos hériteraient sinon de celui de l'accueil.
@@ -48,13 +50,16 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Header />
-      <main id="main-content" className="pt-32 pb-20">
-        <HeroSection />
-        <ProjectsSection />
-        <StackSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
+      <MotionSafe>
+        <main id="main-content">
+          <HeroSection />
+          <ServicesSection />
+          <ProjectsSection />
+          <StackSection />
+          <AboutSection />
+          <ContactSection />
+        </main>
+      </MotionSafe>
       <Footer />
     </>
   )

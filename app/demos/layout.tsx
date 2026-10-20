@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { MotionSafe } from "@/demos/kit/motion-safe"
+import { MotionSafe } from "@/components/motion/motion-safe"
 import "./demos.css"
 
 // Concepts de sites pour des entreprises fictives : hors index, pour ne pas apparaître comme de vrais commerces.

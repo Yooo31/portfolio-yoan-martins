@@ -39,21 +39,12 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description:
       "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 800,
-        height: 533,
-        alt: "Yoan Martins - Développeur Full Stack",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description:
       "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées.",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

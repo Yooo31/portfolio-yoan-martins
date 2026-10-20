@@ -1,4 +1,4 @@
-import { test as base, expect, type Page } from "@playwright/test"
+import { test as base, expect, type Locator, type Page } from "@playwright/test"
 
 const PIXEL = Buffer.from(
   "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
@@ -43,4 +43,22 @@ export async function scrollThrough(page: Page) {
     }
     window.scrollTo(0, 0)
   })
+}
+
+/**
+ * Amène un élément au centre de l'écran sans défilement animé : le défilement fluide du site
+ * (scroll-behavior: smooth) déplace l'élément pendant que Playwright attend qu'il soit stable.
+ */
+export async function scrollToCenter(locator: Locator) {
+  await locator.evaluate(element =>
+    element.scrollIntoView({ block: "center", behavior: "instant" })
+  )
+}
+
+/**
+ * Ouvre une page et attend la fin du chargement (React hydraté) : avant, les clics ne sont pas
+ * encore gérés et Next.js peut remettre le défilement en haut de page.
+ */
+export async function gotoReady(page: Page, url: string) {
+  await page.goto(url, { waitUntil: "networkidle" })
 }

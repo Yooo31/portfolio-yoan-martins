@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion } from "motion/react"
-import { useReducedMotionSafe } from "@/demos/kit/use-reduced-motion"
+import { useReducedMotionSafe } from "@/components/motion/use-reduced-motion"
 import { useState } from "react"
 import { ArrowRight, Phone } from "lucide-react"
 import { telHref, type Business } from "@/demos/kit/business"
