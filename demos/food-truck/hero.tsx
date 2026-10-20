@@ -166,7 +166,7 @@ export function Hero({ business }: { business: Business }) {
                     sizes="(min-width: 1024px) 300px, 50vw"
                     draggable={false}
                     className="object-cover"
-                    priority={i < 2}
+                    preload={i < 2}
                   />
                 </div>
                 <span

@@ -25,12 +25,12 @@ export function Header() {
           aria-label="Yoan Martins - Accueil"
         >
           <Image
-            src="/icon.svg"
+            src="/logo-96.webp"
             alt="Logo Yoan Martins"
             width={40}
             height={40}
             className="rounded-full"
-            priority
+            loading="eager"
           />
         </Link>
 

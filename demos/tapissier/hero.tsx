@@ -109,7 +109,7 @@ export function Hero({ business }: { business: Business }) {
                 src={IMAGES.hero}
                 alt="Fauteuil ancien en bois sculpté, garni de tissu"
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 420px, 80vw"
                 className="object-cover object-[50%_60%]"
               />
