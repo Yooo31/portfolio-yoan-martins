@@ -11,6 +11,11 @@ export interface Project {
   featured: boolean
   year: string
   status?: "completed" | "in-progress" | "archived"
+  /**
+   * Forme de la tuile dans la mosaïque : "feature" (2×2), "tall" (1×2, image verticale),
+   * "wide" (2×1, capture d'écran), "square" (1×1, par défaut)
+   */
+  tile?: "feature" | "tall" | "wide" | "square"
   /** "contain" pour un logo à afficher en entier (par défaut : l'image remplit le cadre) */
   imageFit?: "cover" | "contain"
   /** Couleur de fond derrière une image en "contain" */
@@ -34,6 +39,7 @@ export const projects: Project[] = [
     status: "completed",
     imageFit: "contain",
     imageBg: "#ffffff",
+    tile: "feature",
   },
   {
     id: "puissance-4",
@@ -47,6 +53,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2025",
     status: "completed",
+    tile: "tall",
   },
   {
     id: "keep-your-room",
@@ -75,6 +82,8 @@ export const projects: Project[] = [
     url: "https://yoanmartins.fr",
     year: "2026",
     status: "completed",
+    imageFit: "contain",
+    imageBg: "#0e0f20",
   },
   {
     id: "demo-tapissier",
@@ -89,6 +98,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2026",
     status: "completed",
+    tile: "wide",
   },
   {
     id: "demo-food-truck",
@@ -103,6 +113,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2026",
     status: "completed",
+    tile: "wide",
   },
   {
     id: "casa-catherina",
@@ -134,6 +145,7 @@ export const projects: Project[] = [
     status: "in-progress",
     imageFit: "contain",
     imageBg: "#ffffff",
+    tile: "wide",
   },
   {
     id: "portfolio",

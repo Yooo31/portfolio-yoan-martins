@@ -46,6 +46,27 @@ test.describe("cartes des réalisations", () => {
     expect(onTop).toBe(true)
   })
 
+  test("la mosaïque est complète sur grand écran (aucune colonne plus courte)", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(isMobile, "une seule colonne sur mobile")
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await gotoReady(page, "/")
+    const rects = await page
+      .locator("#work article")
+      .evaluateAll(articles => articles.map(article => article.getBoundingClientRect().toJSON()))
+    const bottom = Math.max(...rects.map(rect => rect.bottom))
+    const columns = [...new Set(rects.map(rect => Math.round(rect.left)))]
+    // Pour chaque début de colonne, une tuile descend jusqu'au bas de la grille.
+    for (const left of columns) {
+      const reachesBottom = rects.some(
+        rect => rect.left <= left + 1 && rect.right > left + 1 && Math.abs(rect.bottom - bottom) < 2
+      )
+      expect(reachesBottom, `colonne à x=${left}`).toBe(true)
+    }
+  })
+
   test("les filtres n'affichent que la catégorie choisie", async ({ page }) => {
     await gotoReady(page, "/")
     const filters = page.getByRole("group", { name: "Filtrer les réalisations" })

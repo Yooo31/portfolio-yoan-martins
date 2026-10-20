@@ -7,6 +7,7 @@ import { ArrowUpRight, Code2, Hammer } from "lucide-react"
 import { getFeaturedProjects, type Project } from "@/data/projects"
 import { Github } from "@/components/ui/brand-icons"
 import { Reveal } from "@/components/motion/reveal"
+import { Tilt } from "@/components/motion/tilt"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { cn } from "@/lib/utils"
 
@@ -35,115 +36,170 @@ export function primaryLink(project: Project) {
   return null
 }
 
+// Place de chaque forme de tuile dans la mosaïque (1 colonne sur mobile, 2 puis 4 au-delà)
+const tileClasses: Record<NonNullable<Project["tile"]>, string> = {
+  feature: "md:col-span-2 md:row-span-2",
+  tall: "md:row-span-2",
+  wide: "md:col-span-2",
+  square: "",
+}
+
 function ProjectCard({ project }: { project: Project }) {
   const link = primaryLink(project)
   const showGithub = project.github && link?.href !== project.github
+  const tile = project.tile ?? "square"
+  const isBig = tile === "feature" || tile === "tall"
 
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, scale: 0.96 }}
+      initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white transition-[translate,box-shadow,border-color] duration-300 dark:border-zinc-800 dark:bg-zinc-900/40",
-        link &&
-          "hover:-translate-y-1 hover:border-zinc-300 hover:shadow-2xl hover:shadow-zinc-900/10 focus-within:ring-2 focus-within:ring-violet-500 dark:hover:border-zinc-700 dark:hover:shadow-black/50"
-      )}
+      exit={{ opacity: 0, scale: 0.94 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className={cn("min-h-72", tileClasses[tile])}
     >
-      <div
-        className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800"
-        style={project.imageBg ? { background: project.imageBg } : undefined}
+      <Tilt
+        className={cn(
+          "group relative isolate h-full overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-900 shadow-sm dark:border-zinc-800",
+          link &&
+            "hover:shadow-2xl hover:shadow-violet-500/10 focus-within:ring-2 focus-within:ring-violet-500"
+        )}
       >
-        <Image
-          src={project.image}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 380px"
-          className={cn(
-            "transition-transform duration-700 ease-out group-hover:scale-105",
-            project.imageFit === "contain" ? "object-contain p-10" : "object-cover object-top"
-          )}
-        />
-        <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
-          <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-zinc-700 shadow-sm backdrop-blur dark:bg-zinc-950/80 dark:text-zinc-300">
-            {categoryLabels[project.category]}
-          </span>
-          {project.status === "in-progress" && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100/95 px-2.5 py-1 text-xs font-medium text-amber-900 shadow-sm backdrop-blur dark:bg-amber-950/90 dark:text-amber-200">
-              <Hammer className="h-3 w-3" aria-hidden="true" />
-              En cours
-            </span>
-          )}
-        </div>
-      </div>
-
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-2 flex items-baseline justify-between gap-4">
-          <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white">
-            {link ? (
-              <a
-                href={link.href}
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                // Le lien couvre toute la carte (pseudo-élément) : elle est cliquable partout.
-                className="outline-none after:absolute after:inset-0 after:content-['']"
-              >
-                {project.name}
-              </a>
-            ) : (
-              project.name
+        {/* Image plein cadre */}
+        <div
+          className="absolute inset-0 -z-10"
+          style={project.imageBg ? { background: project.imageBg } : undefined}
+        >
+          <Image
+            src={project.image}
+            alt=""
+            fill
+            sizes={
+              tile === "feature" || tile === "wide"
+                ? "(max-width: 768px) 100vw, 50vw"
+                : "(max-width: 768px) 100vw, 25vw"
+            }
+            className={cn(
+              "transition-transform duration-700 ease-out group-hover:scale-105",
+              project.imageFit === "contain"
+                ? "object-contain p-10 pb-28"
+                : tile === "wide"
+                  ? "object-cover object-top"
+                  : "object-cover"
             )}
-          </h3>
-          <span className="shrink-0 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-            {project.year}
-          </span>
+          />
         </div>
 
-        <p className="mb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {project.longDescription ?? project.description}
-        </p>
+        {/* Dégradé sombre : le texte reste lisible quelle que soit l'image */}
+        <div
+          className={cn(
+            "absolute inset-0 -z-10 bg-linear-to-t to-transparent transition-colors duration-500",
+            // Petites tuiles : le texte occupe plus de place, le dégradé monte plus haut
+            isBig || tile === "wide"
+              ? "from-zinc-950/95 via-zinc-950/55 group-hover:via-zinc-950/70"
+              : "from-zinc-950 via-zinc-950/85 via-45% group-hover:via-zinc-950/90"
+          )}
+          aria-hidden="true"
+        />
 
-        <ul className="mb-6 flex flex-wrap gap-2" aria-label="Technologies">
-          {project.technologies.map(tech => (
-            <li
-              key={tech}
-              className="rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-300"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-auto flex min-h-8 items-center justify-between gap-4">
-          {link ? (
-            <span
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white"
-              aria-hidden="true"
-            >
-              {link.label === "Voir le code" ? <Code2 className="h-4 w-4" /> : null}
-              {link.label}
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <div className="flex h-full flex-col justify-between p-5 sm:p-6">
+          <div className="flex items-start justify-between gap-2">
+            <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-medium text-zinc-800 shadow-sm backdrop-blur">
+              {categoryLabels[project.category]}
             </span>
-          ) : (
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">Bientôt en ligne</span>
-          )}
+            {project.status === "in-progress" && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100/95 px-2.5 py-1 text-xs font-medium text-amber-900 shadow-sm backdrop-blur">
+                <Hammer className="h-3 w-3" aria-hidden="true" />
+                En cours
+              </span>
+            )}
+          </div>
 
-          {showGithub && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              // Au-dessus du lien principal qui couvre la carte
-              className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-white dark:hover:text-white"
-              aria-label={`Code source de ${project.name} sur GitHub`}
+          {/* Pas de transform ici : il limiterait la zone cliquable du lien étiré à ce bloc */}
+          <div>
+            <div className="mb-1 flex items-baseline justify-between gap-4">
+              <h3
+                className={cn(
+                  "font-semibold tracking-tight text-white",
+                  tile === "feature" ? "text-2xl sm:text-3xl" : "text-lg"
+                )}
+              >
+                {link ? (
+                  <a
+                    href={link.href}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    // Le lien couvre toute la tuile (pseudo-élément) : elle est cliquable partout.
+                    className="outline-none after:absolute after:inset-0 after:content-['']"
+                  >
+                    {project.name}
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </h3>
+              <span className="shrink-0 font-mono text-xs text-zinc-300">{project.year}</span>
+            </div>
+
+            <p
+              className={cn(
+                "text-sm leading-relaxed text-zinc-200",
+                isBig ? "max-w-md" : "line-clamp-2"
+              )}
             >
-              <Github className="h-3.5 w-3.5" />
-              Code
-            </a>
-          )}
+              {isBig ? (project.longDescription ?? project.description) : project.description}
+            </p>
+
+            {/* Technologies : visibles d'emblée sur les grandes tuiles, au survol sur les autres */}
+            <ul
+              className={cn(
+                "mt-3 flex flex-wrap gap-1.5",
+                !isBig &&
+                  "md:max-h-0 md:overflow-hidden md:opacity-0 md:transition-all md:duration-500 md:group-hover:max-h-16 md:group-hover:opacity-100"
+              )}
+              aria-label="Technologies"
+            >
+              {project.technologies.map(tech => (
+                <li
+                  key={tech}
+                  className="rounded-md border border-white/15 bg-white/10 px-2 py-0.5 text-xs text-zinc-100 backdrop-blur"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-4 flex min-h-8 items-center justify-between gap-4">
+              {link ? (
+                <span
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-white"
+                  aria-hidden="true"
+                >
+                  {link.label === "Voir le code" ? <Code2 className="h-4 w-4" /> : null}
+                  {link.label}
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              ) : (
+                <span className="text-sm text-zinc-300">Bientôt en ligne</span>
+              )}
+
+              {showGithub && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // Au-dessus du lien principal qui couvre la tuile
+                  className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-white hover:text-zinc-900"
+                  aria-label={`Code source de ${project.name} sur GitHub`}
+                >
+                  <Github className="h-3.5 w-3.5" />
+                  Code
+                </a>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      </Tilt>
     </motion.article>
   )
 }
@@ -208,7 +264,10 @@ export function ProjectsSection() {
       </div>
 
       <Reveal>
-        <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          layout
+          className="grid grid-flow-row-dense auto-rows-[18rem] gap-5 md:grid-cols-2 lg:grid-cols-4"
+        >
           <AnimatePresence mode="popLayout" initial={false}>
             {visible.map(project => (
               <ProjectCard key={project.id} project={project} />

@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
     role: "Développeur Full Stack (CDI)",
     description:
       "Développement et évolution des applications métiers : performance, scalabilité et qualité du code.",
-    startDate: "2025",
+    startDate: "2026",
     isCurrent: true,
     type: "work",
   },
@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
     description:
       "Optimisation des outils internes et refonte de l'architecture frontend. Travail sur la performance et la scalabilité des applications métiers.",
     startDate: "2023",
-    endDate: "2025",
+    endDate: "2026",
     isCurrent: false,
     type: "work",
   },
@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
     company: "Ynov Campus",
     role: "Master 2 Expert Informatique (diplômé)",
     startDate: "2023",
-    endDate: "2025",
+    endDate: "2026",
     isCurrent: false,
     type: "education",
   },
