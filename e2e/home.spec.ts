@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs"
 import { getFeaturedProjects, projects } from "../data/projects"
-import { expect, test } from "./fixtures"
+import { expect, gotoReady, test } from "./fixtures"
 
 test.describe("accueil", () => {
   test("est indexable et affiche toutes les réalisations mises en avant", async ({ page }) => {
@@ -14,7 +14,7 @@ test.describe("accueil", () => {
 
   test("bascule entre thème clair et sombre", async ({ page }) => {
     await page.emulateMedia({ colorScheme: "light" })
-    await page.goto("/")
+    await gotoReady(page, "/")
     const html = page.locator("html")
     await expect(html).not.toHaveClass(/dark/)
     await page.getByRole("button", { name: "Activer le mode sombre" }).click()

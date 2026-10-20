@@ -1,5 +1,5 @@
 import { readdirSync } from "node:fs"
-import { expect, scrollThrough, test } from "./fixtures"
+import { expect, gotoReady, scrollThrough, test } from "./fixtures"
 
 const demos = readdirSync("app/demos", { withFileTypes: true })
   .filter(entry => entry.isDirectory())
@@ -45,7 +45,7 @@ for (const route of demos) {
       page.on("request", request => {
         if (!["GET", "HEAD"].includes(request.method())) sent.push(request.url())
       })
-      await page.goto(route)
+      await gotoReady(page, route)
       const form = page.locator("form")
       for (const input of await form.locator("input[required]").all()) {
         const type = await input.getAttribute("type")
@@ -60,7 +60,7 @@ for (const route of demos) {
 
     test("le menu mobile s'ouvre et se ferme", async ({ page, isMobile }) => {
       test.skip(!isMobile, "menu burger affiché seulement sur mobile")
-      await page.goto(route)
+      await gotoReady(page, route)
       await page.getByRole("button", { name: "Ouvrir le menu" }).click()
       const menu = page.getByRole("dialog")
       await expect(menu).toBeVisible()
