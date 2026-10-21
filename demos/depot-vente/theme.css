@@ -1,0 +1,126 @@
+/* Thème dépôt-vente : friperie joyeuse, jaune beurre + rouge cerise + bleu denim. Tout est scopé sous .dv-site. */
+.dv-site {
+  --dv-butter: #fbe9a9;
+  --dv-cream: #fffaf0;
+  --dv-cherry: #c8273a;
+  --dv-denim: #2f4a7a;
+  --dv-ink: #221c1a;
+
+  --background: var(--dv-cream);
+  --foreground: var(--dv-ink);
+  --primary: var(--dv-cherry);
+  --primary-foreground: var(--dv-cream);
+  --popover: var(--dv-cream);
+  --popover-foreground: var(--dv-ink);
+  --border: rgb(34 28 26 / 0.14);
+  --input: rgb(34 28 26 / 0.22);
+  --ring: var(--dv-denim);
+  --muted-foreground: rgb(34 28 26 / 0.62);
+  --accent: var(--dv-butter);
+  --accent-foreground: var(--dv-ink);
+  --radius: 0.9rem;
+
+  background: var(--dv-cream);
+  color: var(--dv-ink);
+  font-family: var(--dv-body), system-ui, sans-serif;
+}
+
+.dv-site .font-dv-display {
+  font-family: var(--dv-display), Georgia, serif;
+  font-weight: 400;
+}
+
+.dv-site ::selection {
+  background: var(--dv-cherry);
+  color: var(--dv-cream);
+}
+
+/* Pois rétro en fond */
+.dv-site .dv-dots {
+  background-image: radial-gradient(rgb(200 39 58 / 0.16) 1.5px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+/* Ombre « sticker » */
+.dv-site .dv-pop {
+  box-shadow: 4px 4px 0 var(--dv-ink);
+}
+.dv-site .dv-pop-hover {
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.dv-site .dv-pop-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--dv-ink);
+}
+
+/* Portant : les cintres se balancent comme des pendules, origine au crochet */
+@keyframes dv-swing {
+  0%,
+  100% {
+    transform: rotate(var(--dv-swing, 3deg));
+  }
+  50% {
+    transform: rotate(calc(var(--dv-swing, 3deg) * -1));
+  }
+}
+.dv-site .dv-hanger {
+  transform-origin: 50% 8px;
+  animation: dv-swing var(--dv-swing-duration, 4.5s) ease-in-out infinite;
+  animation-delay: var(--dv-swing-delay, 0s);
+  will-change: transform;
+}
+
+/* Étiquettes cartonnées qui se retournent */
+.dv-site .dv-tag {
+  perspective: 1200px;
+}
+.dv-site .dv-tag-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.dv-site [aria-pressed="true"] .dv-tag-inner {
+  transform: rotateY(180deg);
+}
+.dv-site .dv-tag-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* coins supérieurs coupés, comme une étiquette de vêtement */
+  clip-path: polygon(22% 0, 78% 0, 100% 14%, 100% 100%, 0 100%, 0 14%);
+}
+.dv-site .dv-tag-back {
+  transform: rotateY(180deg);
+}
+.dv-site .dv-tag-shadow {
+  filter: drop-shadow(0 0 1px var(--dv-ink)) drop-shadow(5px 6px 0 rgb(34 28 26 / 0.9));
+}
+
+/* Défilement des polaroids */
+.dv-site .dv-strip {
+  scrollbar-width: none;
+}
+.dv-site .dv-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ticket de caisse : bord dentelé */
+.dv-site .dv-receipt {
+  --dv-tooth: 10px;
+  mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom /
+      calc(2 * var(--dv-tooth)) 51% repeat-x,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top /
+      calc(2 * var(--dv-tooth)) 51% repeat-x;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-site .dv-hanger {
+    animation: none;
+    transform: rotate(calc(var(--dv-swing, 3deg) * 0.5));
+  }
+  .dv-site .dv-tag-inner,
+  .dv-site .dv-pop-hover {
+    transition: none;
+  }
+}
