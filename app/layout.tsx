@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/shared/theme-provider"
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site"
@@ -9,6 +11,10 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter",
 })
+
+// Les scripts de mesure sont servis par Vercel (/_vercel/*) : hors build Vercel (local, CI), ils
+// répondraient en 404 et pollueraient la console. VERCEL n'est défini que pendant un build Vercel.
+const isVercelBuild = process.env.VERCEL === "1"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -95,6 +101,12 @@ export default function RootLayout({
           </a>
           {children}
         </ThemeProvider>
+        {isVercelBuild && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   )
