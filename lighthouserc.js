@@ -14,6 +14,8 @@ module.exports = {
         home,
         "http://localhost/demos/tapissier/index.html",
         "http://localhost/demos/food-truck/index.html",
+        "http://localhost/demos/depot-vente/index.html",
+        "http://localhost/demos/courtier-auto/index.html",
       ],
       numberOfRuns: 3,
     },
