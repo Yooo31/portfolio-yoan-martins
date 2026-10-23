@@ -52,17 +52,10 @@ export const metadata: Metadata = {
     description:
       "Développeur Full Stack spécialisé dans la création d'architectures web robustes et d'interfaces utilisateur soignées.",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  // Hors index depuis la fusion des réalisations dans yoanmartins.fr (refonte SEO, Yooo31/vitrine-yoan-martins#201) :
+  // le portfolio reste en ligne pour qui a le lien, sans concurrencer le site principal dans Google.
+  // Pour le republier (recherche d'emploi), repasser index à true et rétablir app/sitemap.ts.
+  robots: { index: false, follow: true },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
