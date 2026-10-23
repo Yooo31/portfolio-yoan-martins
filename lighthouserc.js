@@ -29,7 +29,9 @@ module.exports = {
           // Les démos sont volontairement en noindex : SEO et performance ne sont exigés que sur l'accueil.
           matchingUrlPattern: "^http://localhost(:\\d+)?/index\\.html$",
           assertions: {
-            "categories:seo": ["error", { minScore: 0.9 }],
+            // Site volontairement hors index (noindex) depuis la fusion dans yoanmartins.fr : le score SEO
+            // de Lighthouse pénalise précisément ce blocage. À rétablir si le portfolio est republié.
+            "categories:seo": "off",
             "categories:performance": ["error", { minScore: 0.75, aggregationMethod: "median" }],
           },
         },
