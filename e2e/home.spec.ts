@@ -3,9 +3,11 @@ import { getFeaturedProjects, projects } from "../data/projects"
 import { expect, gotoReady, test } from "./fixtures"
 
 test.describe("accueil", () => {
-  test("est indexable et affiche toutes les réalisations mises en avant", async ({ page }) => {
+  test("est hors index (fusionné dans yoanmartins.fr) et affiche les réalisations", async ({
+    page,
+  }) => {
     await page.goto("/")
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /^index/)
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/)
     await expect(page.locator("#work article")).toHaveCount(getFeaturedProjects().length)
     for (const project of getFeaturedProjects()) {
       await expect(page.locator("#work").getByRole("heading", { name: project.name })).toBeVisible()

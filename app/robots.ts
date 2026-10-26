@@ -1,13 +1,11 @@
 import type { MetadataRoute } from "next"
-import { SITE_URL } from "@/lib/site"
 
 export const dynamic = "force-static"
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    // Rien n'est bloqué : Google a besoin de /_next/ (CSS, JS) pour rendre la page, et doit pouvoir lire
-    // le noindex des démos (une URL bloquée ici peut quand même être indexée, sans son contenu).
+    // Rien n'est bloqué : Google doit pouvoir lire le noindex des pages (une URL bloquée ici peut quand
+    // même être indexée, sans son contenu). Pas de sitemap : aucune page n'est à indexer.
     rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

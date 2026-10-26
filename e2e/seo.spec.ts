@@ -64,15 +64,13 @@ test.describe("SEO", () => {
     expect((await page.request.get(image)).ok(), `image ${image}`).toBe(true)
   })
 
-  test("robots.txt ne bloque rien et annonce le sitemap", async ({ request }) => {
+  test("robots.txt ne bloque rien (Google doit lire le noindex) et n'annonce aucun sitemap", async ({
+    request,
+  }) => {
     const robots = await (await request.get("/robots.txt")).text()
     expect(robots).not.toMatch(/^Disallow:\s*\S/m)
-    expect(robots).toContain(`Sitemap: ${SITE_URL}/sitemap.xml`)
-  })
-
-  test("le sitemap liste l'accueil sur le bon domaine", async ({ request }) => {
-    const sitemap = await (await request.get("/sitemap.xml")).text()
-    expect(sitemap).toContain(`<loc>${SITE_URL}/</loc>`)
+    expect(robots).not.toContain("Sitemap:")
+    expect((await request.get("/sitemap.xml")).status()).toBe(404)
   })
 
   test("les démos restent hors index et sans canonical vers l'accueil", async ({ page }) => {
